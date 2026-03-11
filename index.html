@@ -145,13 +145,13 @@ pre{padding:1.4rem;overflow-x:auto;font-family:'DM Mono',monospace;font-size:.8r
 .kw{color:#c792ea;}.fn{color:#82aaff;}.st{color:#c3e88d;}.cm{color:#445566;font-style:italic;}.nm{color:#f78c6c;}.vr{color:var(--cyan);}
 
 /* CALLOUT */
-.callout{border-radius:11px;padding:1.1rem 1.4rem;margin:1.4rem 0;display:flex;gap:.9rem;align-items:flex-start;font-size:.875rem;}
+.callout{width:100%;border-radius:11px;padding:1.1rem 1.4rem;margin:1.4rem 0;display:flex;gap:.9rem;align-items:flex-start;font-size:.875rem;}
 .callout.ci{background:var(--cyan-dim);border:1px solid rgba(0,212,255,.22);}
 .callout.ct{background:var(--green-dim);border:1px solid rgba(0,229,122,.18);}
 .callout.cw{background:rgba(245,166,35,.09);border:1px solid rgba(245,166,35,.2);}
 .callout.cpv{background:var(--violet-dim);border:1px solid rgba(155,111,245,.22);}
 .cico{font-size:1.05rem;flex-shrink:0;margin-top:.1rem;}
-.callout p{color:var(--text);line-height:1.65;}
+.callout p{color:var(--text);line-height:1.65;flex:1;min-width:0;margin:0;}
 .callout strong{font-weight:600;}
 
 /* STEPS */
@@ -297,6 +297,24 @@ footer p{color:var(--muted);font-size:.78rem;font-family:'DM Mono',monospace;}
   .claude-hero{padding:2rem 1.5rem;}
 }
 </style>
+
+
+<style>
+/* Fallback: force .fi elements visible if JS doesn't run */
+.fi {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+</style>
+<script>
+/* Fallback stubs for missing external scripts to avoid ReferenceError */
+window.script = window.script || function(){ console.warn('stub script called'); };
+window.emailDecode = window.emailDecode || function(){ console.warn('stub emailDecode called'); };
+/* If site expects a specific function name from email-decode.min.js like 'r' or 'decodeEmail',
+   it's safer to define common names as no-ops. Add more if console shows undefined names. */
+</script>
+
 </head>
 <body>
 
@@ -1012,7 +1030,7 @@ tono amichevole, nessun termine tecnico senza spiegazione."</span>
 <div class="inner">
   <div class="sh fi">
     <div class="pill pv"><div class="dot-b"></div>Sezione 08 — Avanzato</div>
-    <h2>RAG: dare memoria<br>all'AI con i tuoi dati</h2>
+    <h2>RAG: dare memoria all'AI con i tuoi dati</h2>
     <p class="slead">La Retrieval-Augmented Generation è la tecnica più usata per fare in modo che un LLM risponda basandosi sui tuoi documenti, aggiornato e senza allucinazioni.</p>
   </div>
 
@@ -1368,7 +1386,7 @@ tono amichevole, nessun termine tecnico senza spiegazione."</span>
   <p style="margin-top:.6rem;font-size:.62rem;opacity:.4;">Contenuti a scopo educativo · Aggiornato 2025 · Gratuito e aperto</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 function toggleQ(el) {
   const open = el.classList.contains('open');
   document.querySelectorAll('.qi').forEach(i => i.classList.remove('open'));
@@ -1394,4 +1412,13 @@ document.addEventListener('DOMContentLoaded', function() {
   } catch(e) { console.error(e); }
 });
 </script>
+
+<script>
+window.addEventListener('error', function(e){
+  console.warn('Captured error:', e.message);
+  // prevent default handler from stopping other scripts
+  return false;
+});
+</script>
+
 </body>
