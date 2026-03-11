@@ -1387,3 +1387,11 @@ const obs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
 document.querySelectorAll('.fi').fo
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  try {
+    document.querySelectorAll('.fi').forEach(function(el){ el.classList.add('vis'); });
+  } catch(e) { console.error(e); }
+});
+</script>
+</body>
