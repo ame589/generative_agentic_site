@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Academy — Intelligenza Artificiale Generativa e Agentiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #04070f;
+  --surface: #090e1a;
+  --surface2: #0f1624;
+  --border: rgba(80,180,255,0.1);
+  --border-strong: rgba(80,180,255,0.22);
+  --cyan: #00d4ff;
+  --cyan-dim: rgba(0,212,255,0.12);
+  --violet: #9b6ff5;
+  --violet-dim: rgba(155,111,245,0.13);
+  --green: #00e57a;
+  --green-dim: rgba(0,229,122,0.1);
+  --amber: #f5a623;
+  --text: #dce8f8;
+  --text2: #b0c4dc;
+  --muted: #6a7f96;
+  --glow-cyan: 0 0 40px rgba(0,212,255,0.22);
+  --glow-violet: 0 0 40px rgba(155,111,245,0.22);
+  --radius: 14px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.65;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,212,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.025) 1px,transparent 1px);background-size:64px 64px;pointer-events:none;z-index:0;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;background:rgba(4,7,15,.9);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-.02em;color:var(--cyan);text-decoration:none;}
+.logo span{color:var(--violet);}
+.nav-links{display:flex;gap:1.75rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--cyan);}
+.nav-badge{background:var(--cyan-dim);border:1px solid rgba(0,212,255,.35);color:var(--cyan);font-size:.68rem;font-family:'DM Mono',monospace;padding:.22rem .8rem;border-radius:100px;letter-spacing:.08em;display:flex;align-items:center;gap:.4rem;}
+.dot-b{width:5px;height:5px;border-radius:50%;background:var(--green);animation:blink 1.6s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:9rem 2rem 5rem;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;}
+.orb1{width:700px;height:700px;background:radial-gradient(circle,rgba(0,212,255,.18),transparent 65%);top:-150px;left:50%;transform:translateX(-50%);}
+.orb2{width:450px;height:450px;background:radial-gradient(circle,rgba(155,111,245,.22),transparent 65%);bottom:0;left:-80px;}
+.orb3{width:380px;height:380px;background:radial-gradient(circle,rgba(0,229,122,.13),transparent 65%);bottom:60px;right:-60px;}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--cyan);letter-spacing:.22em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem;}
+.eyebrow::before,.eyebrow::after{content:'';width:2.2rem;height:1px;background:var(--cyan);opacity:.6;}
+h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.6rem,7.5vw,5.8rem);line-height:1.04;letter-spacing:-.03em;margin-bottom:1.5rem;max-width:18ch;}
+.cc{color:var(--cyan);}.cv{color:var(--violet);}.cg{color:var(--green);}.ca{color:var(--amber);}
+.lead{font-size:clamp(.95rem,2vw,1.15rem);color:var(--text2);max-width:54ch;margin-bottom:3rem;line-height:1.75;}
+.btn-row{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;}
+.btn{padding:.82rem 1.9rem;border-radius:9px;font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;letter-spacing:.02em;transition:all .22s;cursor:pointer;border:none;}
+.btn-p{background:var(--cyan);color:var(--bg);box-shadow:0 0 22px rgba(0,212,255,.4);}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 0 38px rgba(0,212,255,.65);}
+.btn-g{border:1px solid var(--border-strong);color:var(--text);background:rgba(255,255,255,.03);}
+.btn-g:hover{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-dim);}
+.scroll-hint{position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.3rem;color:var(--muted);font-size:.65rem;font-family:'DM Mono',monospace;letter-spacing:.12em;animation:bounce 2.2s infinite;}
+.sline{width:1px;height:38px;background:linear-gradient(var(--cyan),transparent);}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+/* STATS */
+.stats-bar{position:relative;z-index:1;display:flex;flex-wrap:wrap;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface);}
+.stat{flex:1;min-width:140px;padding:1.8rem 2rem;text-align:center;border-right:1px solid var(--border);}
+.stat:last-child{border-right:none;}
+.sn{font-family:'Syne',sans-serif;font-size:2.1rem;font-weight:800;color:var(--cyan);display:block;line-height:1;margin-bottom:.25rem;}
+.sl{font-size:.7rem;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;}
+
+/* LAYOUT */
+.w{position:relative;z-index:1;}.wd{background:var(--surface);}
+.inner{max-width:1180px;margin:0 auto;padding:5rem 2rem;}
+.divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border) 30%,var(--border) 70%,transparent);position:relative;z-index:1;}
+
+/* SECTION HEAD */
+.sh{margin-bottom:3.5rem;}
+.pill{display:inline-flex;align-items:center;gap:.4rem;font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;padding:.22rem .8rem;border-radius:100px;margin-bottom:.85rem;}
+.pc{background:var(--cyan-dim);border:1px solid rgba(0,212,255,.28);color:var(--cyan);}
+.pv{background:var(--violet-dim);border:1px solid rgba(155,111,245,.3);color:var(--violet);}
+.pg{background:var(--green-dim);border:1px solid rgba(0,229,122,.22);color:var(--green);}
+.pa{background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.25);color:var(--amber);}
+h2{font-family:'Syne',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;}
+h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:-.01em;margin-bottom:.65rem;}
+.slead{color:var(--text2);max-width:52ch;margin-top:.7rem;font-size:.95rem;line-height:1.75;}
+
+/* CARDS */
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.4rem;}
+.card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:1.9rem;transition:all .3s;position:relative;overflow:hidden;}
+.card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--cyan-dim),transparent 55%);opacity:0;transition:opacity .3s;}
+.card:hover{transform:translateY(-4px);border-color:var(--border-strong);box-shadow:var(--glow-cyan);}
+.card:hover::after{opacity:1;}
+.card.v::after{background:linear-gradient(135deg,var(--violet-dim),transparent 55%);}
+.card.v:hover{box-shadow:var(--glow-violet);border-color:rgba(155,111,245,.35);}
+.card.g::after{background:linear-gradient(135deg,var(--green-dim),transparent 55%);}
+.card.g:hover{box-shadow:0 0 40px rgba(0,229,122,.15);border-color:rgba(0,229,122,.28);}
+.card>*{position:relative;z-index:1;}
+.ci{width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.1rem;}
+.cic{background:var(--cyan-dim);border:1px solid rgba(0,212,255,.25);}
+.civ{background:var(--violet-dim);border:1px solid rgba(155,111,245,.25);}
+.cig{background:var(--green-dim);border:1px solid rgba(0,229,122,.18);}
+.cia{background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.22);}
+.card p{color:var(--text2);font-size:.875rem;line-height:1.7;}
+.badge{display:inline-block;font-family:'DM Mono',monospace;font-size:.62rem;padding:.18rem .6rem;border-radius:100px;margin-bottom:.9rem;letter-spacing:.07em;text-transform:uppercase;}
+.bb{background:rgba(0,229,122,.1);color:var(--green);border:1px solid rgba(0,229,122,.18);}
+.bm{background:rgba(245,166,35,.1);color:var(--amber);border:1px solid rgba(245,166,35,.2);}
+.ba{background:var(--violet-dim);color:var(--violet);border:1px solid rgba(155,111,245,.28);}
+
+/* DIAGRAM */
+.diag{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:2.2rem;margin:2rem 0;}
+.dt{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:2rem;text-align:center;}
+.flow{display:flex;align-items:center;flex-wrap:wrap;justify-content:center;gap:.6rem;}
+.fnode{display:flex;flex-direction:column;align-items:center;gap:.35rem;}
+.fbox{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:.65rem 1.1rem;font-size:.78rem;font-family:'DM Mono',monospace;text-align:center;white-space:nowrap;min-width:95px;}
+.fbox.fc{border-color:rgba(0,212,255,.38);color:var(--cyan);background:var(--cyan-dim);}
+.fbox.fv{border-color:rgba(155,111,245,.38);color:var(--violet);background:var(--violet-dim);}
+.fbox.fg{border-color:rgba(0,229,122,.28);color:var(--green);background:var(--green-dim);}
+.fbox.fa{border-color:rgba(245,166,35,.3);color:var(--amber);background:rgba(245,166,35,.1);}
+.fsub{font-size:.62rem;color:var(--muted);font-family:'DM Mono',monospace;text-align:center;max-width:90px;line-height:1.3;}
+.farr{color:var(--muted);font-size:1rem;padding:0 .2rem;}
+
+/* AGENT DIAGRAM */
+.agrid{display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:center;}
+.abrain{width:88px;height:88px;border-radius:50%;background:var(--violet-dim);border:2px solid var(--violet);display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:0 0 28px rgba(155,111,245,.45);animation:pulse 3s infinite;margin:0 auto .5rem;}
+@keyframes pulse{0%,100%{box-shadow:0 0 28px rgba(155,111,245,.45)}50%{box-shadow:0 0 50px rgba(155,111,245,.75)}}
+.albl{font-family:'Syne',sans-serif;font-weight:700;font-size:.82rem;color:var(--violet);text-align:center;}
+.acol{display:flex;flex-direction:column;gap:.65rem;}
+.atool{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:.55rem .95rem;font-size:.72rem;font-family:'DM Mono',monospace;display:flex;align-items:center;gap:.5rem;color:var(--text2);}
+.amid{display:flex;flex-direction:column;align-items:center;gap:.4rem;}
+.marr{display:flex;flex-direction:column;align-items:center;gap:.2rem;font-size:.6rem;font-family:'DM Mono',monospace;color:var(--muted);}
+
+/* CODE */
+.code{background:#060b14;border:1px solid rgba(0,212,255,.14);border-radius:12px;overflow:hidden;margin:1.5rem 0;}
+.cbar{display:flex;align-items:center;justify-content:space-between;padding:.65rem 1.2rem;background:rgba(0,212,255,.05);border-bottom:1px solid rgba(0,212,255,.1);}
+.cdots{display:flex;gap:.38rem;}
+.cd{width:10px;height:10px;border-radius:50%;}
+.cdr{background:#ff5f57;}.cdy{background:#ffbd2e;}.cdg{background:#28c840;}
+.clbl{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--cyan);letter-spacing:.1em;text-transform:uppercase;}
+pre{padding:1.4rem;overflow-x:auto;font-family:'DM Mono',monospace;font-size:.8rem;line-height:1.75;color:#9ab8d8;}
+.kw{color:#c792ea;}.fn{color:#82aaff;}.st{color:#c3e88d;}.cm{color:#445566;font-style:italic;}.nm{color:#f78c6c;}.vr{color:var(--cyan);}
+
+/* CALLOUT */
+.callout{border-radius:11px;padding:1.1rem 1.4rem;margin:1.4rem 0;display:flex;gap:.9rem;align-items:flex-start;font-size:.875rem;}
+.callout.ci{background:var(--cyan-dim);border:1px solid rgba(0,212,255,.22);}
+.callout.ct{background:var(--green-dim);border:1px solid rgba(0,229,122,.18);}
+.callout.cw{background:rgba(245,166,35,.09);border:1px solid rgba(245,166,35,.2);}
+.callout.cpv{background:var(--violet-dim);border:1px solid rgba(155,111,245,.22);}
+.cico{font-size:1.05rem;flex-shrink:0;margin-top:.1rem;}
+.callout p{color:var(--text);line-height:1.65;}
+.callout strong{font-weight:600;}
+
+/* STEPS */
+.steps{display:flex;flex-direction:column;gap:1.1rem;margin:1.75rem 0;}
+.step{display:flex;gap:1.3rem;align-items:flex-start;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;transition:border-color .2s;}
+.step:hover{border-color:var(--border-strong);}
+.snum{font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:800;color:var(--cyan);min-width:2rem;line-height:1;}
+.step h4{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:.35rem;font-size:.95rem;}
+.step p{color:var(--text2);font-size:.85rem;line-height:1.65;}
+
+/* TABLE */
+.tw{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border);}
+table{width:100%;border-collapse:collapse;font-size:.85rem;}
+thead th{font-family:'Syne',sans-serif;font-weight:700;padding:.9rem 1.4rem;text-align:left;border-bottom:1px solid var(--border);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--surface2);}
+thead th:nth-child(2){color:var(--cyan);}
+thead th:nth-child(3){color:var(--violet);}
+tbody td{padding:.9rem 1.4rem;border-bottom:1px solid rgba(80,180,255,.05);vertical-align:top;color:var(--text2);}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:rgba(255,255,255,.015);}
+.tdf{color:var(--muted);font-family:'DM Mono',monospace;font-size:.72rem;}
+
+/* PROGRESS */
+.pw{display:flex;flex-direction:column;gap:.7rem;margin:1rem 0;}
+.pr{display:flex;align-items:center;gap:1rem;font-size:.72rem;font-family:'DM Mono',monospace;}
+.pl{color:var(--muted);min-width:145px;}
+.pb{flex:1;height:4px;background:rgba(255,255,255,.05);border-radius:10px;overflow:hidden;}
+.pf{height:100%;border-radius:10px;transform-origin:left;animation:growBar 1.8s ease forwards;}
+@keyframes growBar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.pp{color:var(--cyan);min-width:38px;text-align:right;}
+
+/* VIDEO */
+.vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.4rem;}
+.vcard{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .3s;cursor:pointer;}
+.vcard:hover{transform:translateY(-4px);border-color:var(--border-strong);box-shadow:var(--glow-cyan);}
+.vthumb{aspect-ratio:16/9;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.vbg{position:absolute;inset:0;}
+.vg1{background:linear-gradient(135deg,rgba(0,212,255,.22),rgba(155,111,245,.22));}
+.vg2{background:linear-gradient(135deg,rgba(155,111,245,.22),rgba(0,229,122,.18));}
+.vg3{background:linear-gradient(135deg,rgba(0,229,122,.18),rgba(0,212,255,.18));}
+.vg4{background:linear-gradient(135deg,rgba(245,166,35,.18),rgba(155,111,245,.22));}
+.vico{font-size:3.2rem;position:relative;z-index:1;}
+.play{position:absolute;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);border:2px solid rgba(255,255,255,.28);display:flex;align-items:center;justify-content:center;font-size:1.1rem;z-index:2;transition:all .2s;}
+.vcard:hover .play{background:var(--cyan);border-color:var(--cyan);color:var(--bg);transform:scale(1.1);}
+.vinfo{padding:1.15rem;}
+.vmeta{display:flex;gap:.7rem;margin-bottom:.5rem;align-items:center;}
+.vdur{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);}
+.vinfo h3{font-size:.95rem;margin-bottom:.3rem;}
+.vinfo p{font-size:.8rem;color:var(--text2);line-height:1.55;}
+
+/* QUIZ */
+.quiz{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.qi{border-bottom:1px solid var(--border);}
+.qi:last-child{border-bottom:none;}
+.qq{padding:1.15rem 1.6rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:'Syne',sans-serif;font-weight:600;font-size:.9rem;gap:1rem;transition:background .2s;user-select:none;}
+.qq:hover{background:rgba(255,255,255,.018);}
+.qn{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--cyan);min-width:22px;}
+.qt{width:26px;height:26px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--muted);flex-shrink:0;transition:all .22s;}
+.qi.open .qt{background:var(--cyan-dim);border-color:var(--cyan);color:var(--cyan);transform:rotate(45deg);}
+.qa{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;padding:0 1.6rem;color:var(--text2);font-size:.855rem;line-height:1.72;}
+.qi.open .qa{max-height:260px;padding:0 1.6rem 1.4rem;}
+
+/* CLAUDE SPECIAL */
+.claude-hero{background:linear-gradient(135deg,rgba(155,111,245,.12) 0%,rgba(0,212,255,.08) 50%,rgba(155,111,245,.12) 100%);border:1px solid rgba(155,111,245,.22);border-radius:20px;padding:3rem;margin-bottom:3rem;position:relative;overflow:hidden;}
+.claude-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(155,111,245,.2),transparent 70%);pointer-events:none;}
+.claudelogo{width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,var(--violet),#5b21b6);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:1.5rem;box-shadow:0 0 24px rgba(155,111,245,.45);}
+.mcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;margin:2rem 0;}
+.mcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:all .25s;}
+.mcard:hover{border-color:rgba(155,111,245,.4);transform:translateY(-3px);}
+.mtag{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--violet);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;}
+.mcard h4{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:.5rem;}
+.mcard p{font-size:.8rem;color:var(--text2);line-height:1.6;}
+.mbadge{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);margin-top:.75rem;display:block;}
+
+/* FOOTER */
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;background:var(--surface);}
+.flogo{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--cyan);display:block;margin-bottom:.7rem;}
+.flogo span{color:var(--violet);}
+footer p{color:var(--muted);font-size:.78rem;font-family:'DM Mono',monospace;}
+.flinks{display:flex;gap:1.5rem;justify-content:center;margin:1rem 0;flex-wrap:wrap;}
+.flinks a{color:var(--muted);text-decoration:none;font-size:.75rem;font-family:'DM Mono',monospace;transition:color .2s;}
+.flinks a:hover{color:var(--cyan);}
+
+/* FADE */
+.fi{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s;}
+.fi.vis{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .agrid{grid-template-columns:1fr;}
+  .amid{display:none;}
+  .acol{flex-direction:row;flex-wrap:wrap;}
+  table{font-size:.75rem;}
+  thead th,tbody td{padding:.7rem .9rem;}
+  .stat{padding:1.4rem 1.2rem;}
+  .flow{gap:.3rem;}
+  .fbox{font-size:.68rem;min-width:78px;padding:.55rem .7rem;}
+  .inner{padding:3.5rem 1.2rem;}
+  .claude-hero{padding:2rem 1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">AI<span>Academy</span></a>
+  <ul class="nav-links">
+    <li><a href="#generativa">Generativa</a></li>
+    <li><a href="#agentiva">Agentiva</a></li>
+    <li><a href="#confronto">Confronto</a></li>
+    <li><a href="#claude">Claude</a></li>
+    <li><a href="#video">Video</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+  </ul>
+  <span class="nav-badge"><div class="dot-b"></div>Gratuito</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+  <div class="eyebrow">Impara l'Intelligenza Artificiale Moderna</div>
+  <h1>Capire l'AI<br><span class="cc">Generativa</span> e<br><span class="cv">Agentiva</span></h1>
+  <p class="lead">Tutorial chiari, esempi pratici, schemi visivi e video per comprendere l'AI moderna — accessibile a tutti, anche partendo da zero.</p>
+  <div class="btn-row">
+    <a href="#generativa" class="btn btn-p">Inizia il percorso →</a>
+    <a href="#video" class="btn btn-g">▶ Guarda i video</a>
+  </div>
+  <div class="scroll-hint"><div class="sline"></div>SCORRI</div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><span class="sn">5</span><span class="sl">Sezioni tematiche</span></div>
+  <div class="stat"><span class="sn">15+</span><span class="sl">Tutorial pratici</span></div>
+  <div class="stat"><span class="sn">0€</span><span class="sl">Completamente gratuito</span></div>
+  <div class="stat"><span class="sn">∞</span><span class="sl">Livelli di apprendimento</span></div>
+</div>
+
+<!-- ═══════════════ 01 — AI GENERATIVA ═══════════════ -->
+<div id="generativa" class="w">
+<div class="inner">
+  <div class="sh fi">
+    <div class="pill pc"><div class="dot-b"></div>Sezione 01</div>
+    <h2>AI Generativa</h2>
+    <p class="slead">L'AI generativa <em>crea</em> nuovi contenuti: testo, immagini, audio, video e codice. Scopri come funziona partendo dai concetti fondamentali.</p>
+  </div>
+
+  <div class="callout ci fi">
+    <span class="cico">💡</span>
+    <p><strong>Definizione:</strong> Un sistema di AI generativa apprende la struttura di enormi quantità di dati (testi, immagini, suoni) e impara a produrre nuovi contenuti originali con caratteristiche simili, mai identici agli esempi usati durante l'addestramento.</p>
+  </div>
+
+  <div class="diag fi">
+    <div class="dt">// Flusso semplificato di un modello linguistico (LLM)</div>
+    <div class="flow">
+      <div class="fnode"><div class="fbox fc">Input testuale</div><div class="fsub">La tua domanda o il prompt</div></div>
+      <div class="farr">→</div>
+      <div class="fnode"><div class="fbox">Tokenizzazione</div><div class="fsub">Parole → numeri interi</div></div>
+      <div class="farr">→</div>
+      <div class="fnode"><div class="fbox fv">Transformer<br>+ Attenzione</div><div class="fsub">Il nucleo del modello</div></div>
+      <div class="farr">→</div>
+      <div class="fnode"><div class="fbox">Distribuzione<br>di probabilità</div><div class="fsub">Quale parola viene dopo?</div></div>
+      <div class="farr">→</div>
+      <div class="fnode"><div class="fbox fg">Risposta<br>generata</div><div class="fsub">Output finale</div></div>
+    </div>
+  </div>
+
+  <div class="callout ct fi">
+    <span class="cico">🎯</span>
+    <p><strong>Analogia semplice:</strong> Prova a completare: "Il cielo di notte è…" — hai detto "stellato" o "buio"? Un LLM fa esattamente questo, ma addestrato su miliardi di testi, quindi riesce a completare qualsiasi tipo di testo in modo coerente e contestualizzato.</p>
+  </div>
+
+  <h3 style="margin-top:2.5rem;margin-bottom:1.3rem;">🗂 Principali categorie di AI generativa</h3>
+  <div class="g3">
+    <div class="card fi"><div class="ci cic">📝</div><span class="badge bb">Principiante</span><h3>Generazione di testo</h3><p>Il modello prevede la parola successiva più probabile, una alla volta. È il meccanismo dietro ChatGPT, Claude, Gemini e tutti gli assistenti conversazionali moderni.</p></div>
+    <div class="card v fi"><div class="ci civ">🎨</div><span class="badge bb">Principiante</span><h3>Generazione di immagini</h3><p>Modelli come Stable Diffusion e DALL-E partono da rumore casuale e, iterazione dopo iterazione, lo "ripuliscono" per ottenere l'immagine richiesta nel prompt.</p></div>
+    <div class="card g fi"><div class="ci cig">🎵</div><span class="badge bm">Intermedio</span><h3>Generazione audio e musica</h3><p>Sistemi come Suno, ElevenLabs e Udio generano voci realistiche e musica originale da semplici descrizioni testuali, usando architetture simili ai modelli linguistici.</p></div>
+    <div class="card fi"><div class="ci cic">🎬</div><span class="badge bm">Intermedio</span><h3>Generazione video</h3><p>Sora di OpenAI e Runway ML creano video da prompt testuali, combinando la comprensione del linguaggio con la modellazione del movimento nel tempo.</p></div>
+    <div class="card v fi"><div class="ci civ">💻</div><span class="badge bb">Principiante</span><h3>Generazione di codice</h3><p>GitHub Copilot, Claude e altri modelli scrivono, spiegano e correggono codice in decine di linguaggi, accelerando enormemente lo sviluppo software.</p></div>
+    <div class="card g fi"><div class="ci cig">🧬</div><span class="badge ba">Avanzato</span><h3>Generazione molecolare</h3><p>Modelli come AlphaFold e RFDiffusion generano strutture proteiche e molecole con proprietà desiderate, rivoluzionando la ricerca farmaceutica.</p></div>
+  </div>
+
+  <h3 style="margin-top:3rem;margin-bottom:1rem;">💻 Scrivere prompt efficaci: la differenza che fa</h3>
+  <div class="code fi">
+    <div class="cbar"><div class="cdots"><div class="cd cdr"></div><div class="cd cdy"></div><div class="cd cdg"></div></div><span class="clbl">Prompt Engineering — Esempi pratici</span></div>
+    <pre><span class="cm"># ❌ Prompt vago — risultato generico e superficiale</span>
+<span class="st">"Scrivimi qualcosa sull'AI"</span>
+
+<span class="cm"># ✅ Prompt strutturato — risultato preciso e utile</span>
+<span class="st">"Sei un insegnante di scuola media italiana.
+Spiega cos'è l'intelligenza artificiale in 3 paragrafi,
+usa esempi di vita quotidiana come Netflix e Google Maps,
+tono amichevole, nessun termine tecnico senza spiegazione."</span>
+
+<span class="cm"># La formula per un prompt efficace:</span>
+<span class="kw">Ruolo</span>     → Chi deve essere il modello?
+<span class="kw">Contesto</span>  → Qual è la situazione?
+<span class="kw">Compito</span>   → Cosa deve fare esattamente?
+<span class="kw">Formato</span>   → Come strutturare la risposta?
+<span class="kw">Stile</span>     → Tono, livello, lunghezza
+
+<span class="cm"># Tecniche avanzate di prompting:</span>
+<span class="fn">Few-shot</span>:         <span class="st">"Ecco 3 esempi di come voglio la risposta: ..."</span>
+<span class="fn">Chain-of-thought</span>: <span class="st">"Pensa passo per passo prima di rispondere"</span>
+<span class="fn">Role-playing</span>:     <span class="st">"Agisci come un esperto di finanza con 20 anni di esperienza"</span></pre>
+  </div>
+
+  <h3 style="margin-top:3rem;margin-bottom:1.5rem;">🏋️ Come viene addestrato un modello generativo</h3>
+  <div class="steps">
+    <div class="step fi"><div class="snum">01</div><div><h4>Raccolta e pulizia dei dati</h4><p>Miliardi di testi da internet, libri e articoli scientifici vengono raccolti, filtrati e deduplicati. La qualità dei dati di addestramento determina direttamente la qualità del modello finale.</p></div></div>
+    <div class="step fi"><div class="snum">02</div><div><h4>Pre-addestramento (apprendimento non supervisionato)</h4><p>Il modello impara a predire la parola successiva su trilioni di token. Questo processo richiede settimane di calcolo su migliaia di GPU ed è la fase più costosa economicamente.</p></div></div>
+    <div class="step fi"><div class="snum">03</div><div><h4>Fine-tuning supervisionato (SFT)</h4><p>Il modello viene addestrato su esempi di conversazioni di alta qualità scritte da esperti umani, imparando il formato dialogo domanda-risposta.</p></div></div>
+    <div class="step fi"><div class="snum">04</div><div><h4>Allineamento con feedback umano (RLHF)</h4><p>Valutatori umani confrontano coppie di risposte indicando quale è migliore. Il modello apprende a preferire risposte utili, accurate e sicure usando l'apprendimento per rinforzo.</p></div></div>
+    <div class="step fi"><div class="snum">05</div><div><h4>Verifica sicurezza e rilascio iterativo</h4><p>Team di sicurezza tentano di far produrre contenuti dannosi al modello (red-teaming). I problemi trovati vengono corretti prima e dopo ogni rilascio pubblico.</p></div></div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════ 02 — AI AGENTIVA ═══════════════ -->
+<div id="agentiva" class="w wd">
+<div class="inner">
+  <div class="sh fi">
+    <div class="pill pv"><div class="dot-b"></div>Sezione 02</div>
+    <h2>AI Agentiva</h2>
+    <p class="slead">L'AI agentiva non si limita a rispondere: <em>pianifica ed esegue azioni</em>. Usa strumenti reali, si adatta ai risultati e porta a termine obiettivi complessi in modo autonomo.</p>
+  </div>
+
+  <div class="callout cw fi">
+    <span class="cico">⚡</span>
+    <p><strong>Differenza fondamentale:</strong> L'AI generativa risponde a una domanda. L'AI agentiva <strong>esegue un piano articolato</strong> in più passi, usando strumenti concreti (web, API, codice, email, file) e prendendo decisioni autonome lungo il percorso.</p>
+  </div>
+
+  <div class="diag fi">
+    <div class="dt">// Architettura di un agente AI — Schema concettuale</div>
+    <div class="agrid">
+      <div class="acol">
+        <div style="font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;">PERCEZIONE / INPUT</div>
+        <div class="atool"><span>💬</span> Istruzione dell'utente</div>
+        <div class="atool"><span>📄</span> Documenti e file</div>
+        <div class="atool"><span>🌐</span> Dati da web o API</div>
+        <div class="atool"><span>🧠</span> Memoria a lungo termine</div>
+        <div class="atool"><span>👁</span> Risultati azioni precedenti</div>
+      </div>
+      <div class="amid">
+        <div class="marr">
+          <span style="color:var(--violet);font-size:1.4rem;">⟵</span>
+          <span>Ragiona</span><span>Pianifica</span><span>Decide</span>
+          <span style="color:var(--violet);font-size:1.4rem;">⟶</span>
+        </div>
+        <div class="abrain">🤖</div>
+        <div class="albl">Agente LLM</div>
+      </div>
+      <div class="acol">
+        <div style="font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;">AZIONI / STRUMENTI</div>
+        <div class="atool"><span>🔍</span> Ricerca e navigazione web</div>
+        <div class="atool"><span>💻</span> Scrittura ed esecuzione codice</div>
+        <div class="atool"><span>📧</span> Invio di email e messaggi</div>
+        <div class="atool"><span>📁</span> Lettura e scrittura di file</div>
+        <div class="atool"><span>🔌</span> Chiamate a API esterne</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:2.5rem;margin-bottom:1rem;">🔄 Il ciclo Ragiona → Agisci (Pattern ReAct)</h3>
+  <div class="diag fi">
+    <div class="dt">// Come un agente risolve un obiettivo complesso passo dopo passo</div>
+    <div class="flow" style="flex-direction:column;gap:.8rem;">
+      <div class="fbox fc" style="max-width:440px;width:100%;text-align:center;white-space:normal;">🎯 Obiettivo: "Analizza le ultime notizie sull'AI e inviami un report"</div>
+      <div style="display:flex;gap:1rem;width:100%;max-width:520px;flex-wrap:wrap;justify-content:center;">
+        <div class="fnode" style="flex:1;min-width:130px;"><div class="fbox fv" style="width:100%">💭 RAGIONA</div><div class="fsub">Devo cercare notizie AI recenti sul web</div></div>
+        <div class="farr" style="align-self:center;">→</div>
+        <div class="fnode" style="flex:1;min-width:130px;"><div class="fbox fa" style="width:100%">⚡ AGISCE</div><div class="fsub">Chiama: cerca_web("AI news 2025")</div></div>
+        <div class="farr" style="align-self:center;">→</div>
+        <div class="fnode" style="flex:1;min-width:130px;"><div class="fbox" style="width:100%">👁 OSSERVA</div><div class="fsub">Risultati: 8 articoli trovati</div></div>
+      </div>
+      <div style="color:var(--muted);font-family:'DM Mono',monospace;font-size:.65rem;">↓ il ciclo si ripete: legge articoli → sintetizza → redige il report</div>
+      <div class="fbox fg" style="max-width:440px;width:100%;text-align:center;white-space:normal;">✅ COMPLETATO: Report sintetizzato e inviato via email</div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:2.5rem;margin-bottom:1.3rem;">🗂 Tipologie di architetture agentive</h3>
+  <div class="g3">
+    <div class="card fi"><div class="ci cic">🔗</div><span class="badge bm">Intermedio</span><h3>Agenti a catena</h3><p>I passi si eseguono in sequenza: l'output di ogni fase diventa l'input di quella successiva. Adatti a flussi di lavoro lineari e prevedibili.</p></div>
+    <div class="card v fi"><div class="ci civ">🌐</div><span class="badge ba">Avanzato</span><h3>Sistemi multi-agente</h3><p>Un agente orchestratore coordina agenti specializzati (ricercatore, scrittore, revisore, programmatore), ognuno esperto nel proprio dominio.</p></div>
+    <div class="card g fi"><div class="ci cig">💾</div><span class="badge bm">Intermedio</span><h3>Agenti con memoria</h3><p>L'agente mantiene una memoria persistente delle interazioni passate usando database vettoriali, recuperando il contesto rilevante in qualsiasi momento.</p></div>
+    <div class="card fi"><div class="ci cic">🛡</div><span class="badge bm">Intermedio</span><h3>Supervisione umana (HITL)</h3><p>L'agente si ferma in punti critici per chiedere conferma prima di compiere azioni irreversibili, garantendo controllo umano nelle decisioni importanti.</p></div>
+    <div class="card v fi"><div class="ci civ">🧭</div><span class="badge ba">Avanzato</span><h3>Agenti con pianificazione</h3><p>Tecniche come Tree-of-Thought permettono all'agente di esplorare più percorsi alternativi, scegliendo quello con maggiori probabilità di successo.</p></div>
+    <div class="card g fi"><div class="ci cig">🔧</div><span class="badge bb">Principiante</span><h3>Agenti con strumenti (Tool Use)</h3><p>La forma più comune: il modello linguistico riceve una lista di funzioni disponibili e decide autonomamente quale chiamare e con quali parametri.</p></div>
+  </div>
+
+  <h3 style="margin-top:3rem;margin-bottom:1rem;">💻 Esempio: agente con tool use in Python</h3>
+  <div class="code fi">
+    <div class="cbar"><div class="cdots"><div class="cd cdr"></div><div class="cd cdy"></div><div class="cd cdg"></div></div><span class="clbl">Python — Agente con Tool Use (Anthropic SDK)</span></div>
+    <pre><span class="kw">import</span> <span class="vr">anthropic</span>
+
+<span class="cm"># 1. Definiamo gli strumenti disponibili all'agente</span>
+<span class="vr">tools</span> = [
+  {
+    <span class="st">"name"</span>: <span class="st">"cerca_web"</span>,
+    <span class="st">"description"</span>: <span class="st">"Cerca informazioni aggiornate su internet"</span>,
+    <span class="st">"input_schema"</span>: {
+      <span class="st">"type"</span>: <span class="st">"object"</span>,
+      <span class="st">"properties"</span>: {
+        <span class="st">"query"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>, <span class="st">"description"</span>: <span class="st">"La query di ricerca"</span>}
+      },
+      <span class="st">"required"</span>: [<span class="st">"query"</span>]
+    }
+  },
+  {
+    <span class="st">"name"</span>: <span class="st">"invia_email"</span>,
+    <span class="st">"description"</span>: <span class="st">"Invia una email a un destinatario"</span>,
+    <span class="st">"input_schema"</span>: {
+      <span class="st">"type"</span>: <span class="st">"object"</span>,
+      <span class="st">"properties"</span>: {
+        <span class="st">"destinatario"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},
+        <span class="st">"testo"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>}
+      }
+    }
+  }
+]
+
+<span class="cm"># 2. L'agente decide autonomamente quale strumento usare e quando</span>
+<span class="vr">client</span> = <span class="vr">anthropic</span>.<span class="fn">Anthropic</span>()
+<span class="vr">response</span> = <span class="vr">client</span>.<span class="vr">messages</span>.<span class="fn">create</span>(
+  <span class="vr">model</span>=<span class="st">"claude-opus-4-5"</span>,
+  <span class="vr">max_tokens</span>=<span class="nm">1024</span>,
+  <span class="vr">tools</span>=<span class="vr">tools</span>,
+  <span class="vr">messages</span>=[{
+    <span class="st">"role"</span>: <span class="st">"user"</span>,
+    <span class="st">"content"</span>: <span class="st">"Cerca le ultime notizie sull'AI e invia un riassunto a mario@esempio.it"</span>
+  }]
+)
+
+<span class="cm"># 3. L'agente potrebbe chiamare uno o più strumenti in sequenza</span>
+<span class="kw">for</span> <span class="vr">block</span> <span class="kw">in</span> <span class="vr">response</span>.<span class="vr">content</span>:
+  <span class="kw">if</span> <span class="vr">block</span>.<span class="vr">type</span> == <span class="st">"tool_use"</span>:
+    <span class="fn">print</span>(<span class="st">f"Agente chiama: {block.name}({block.input})"</span>)
+    <span class="cm"># → qui eseguiamo lo strumento e restituiamo il risultato al modello</span></pre>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════ 03 — CONFRONTO ═══════════════ -->
+<div id="confronto" class="w">
+<div class="inner">
+  <div class="sh fi">
+    <div class="pill pg"><div class="dot-b"></div>Sezione 03</div>
+    <h2>Generativa vs Agentiva<br>a confronto diretto</h2>
+    <p class="slead">Due paradigmi complementari: capire le differenze aiuta a scegliere lo strumento giusto per ogni esigenza concreta.</p>
+  </div>
+
+  <div class="tw fi">
+    <table>
+      <thead><tr><th>Caratteristica</th><th>🤖 AI Generativa</th><th>⚡ AI Agentiva</th></tr></thead>
+      <tbody>
+        <tr><td class="tdf">Obiettivo principale</td><td>Produrre un contenuto di qualità (testo, immagine, codice…)</td><td>Completare un compito complesso attraverso azioni sequenziali</td></tr>
+        <tr><td class="tdf">Modalità di interazione</td><td>Una richiesta → una risposta (conversazione)</td><td>Un obiettivo → pianificazione → esecuzione autonoma di N passi</td></tr>
+        <tr><td class="tdf">Accesso a strumenti</td><td>Solo conoscenza interna del modello</td><td>Web, API, database, file system, email, codice eseguibile…</td></tr>
+        <tr><td class="tdf">Supervisione richiesta</td><td>Sempre umana (l'utente legge e valuta ogni output)</td><td>Variabile: da supervisione continua ad autonomia quasi totale</td></tr>
+        <tr><td class="tdf">Esempi concreti</td><td>ChatGPT, Claude, DALL-E, Midjourney, Sora, Copilot</td><td>Claude Computer Use, Devin, AutoGPT, Cursor, agenti personalizzati</td></tr>
+        <tr><td class="tdf">Latenza tipica</td><td>Secondi (risposta immediata)</td><td>Da minuti a ore (dipende dalla complessità del compito)</td></tr>
+        <tr><td class="tdf">Rischi principali</td><td>Allucinazioni, imprecisioni, bias nel contenuto generato</td><td>Azioni irreversibili, errori a cascata, comportamento non previsto</td></tr>
+        <tr><td class="tdf">Maturità tecnologica</td><td>Alta — ampiamente utilizzata in produzione</td><td>Media — rapida evoluzione, ancora in fase di standardizzazione</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:3rem;margin-bottom:1.5rem;">🚀 Applicazioni reali nel 2025</h3>
+  <div class="g3">
+    <div class="card fi"><div class="ci cic">🏥</div><span class="badge bb">Generativa</span><h3>Medicina e sanità</h3><p>LLM che riassumono cartelle cliniche, generano report medici strutturati e supportano i medici nella formulazione di diagnosi differenziali.</p></div>
+    <div class="card v fi"><div class="ci civ">💼</div><span class="badge bm">Agentiva</span><h3>Automazione del lavoro</h3><p>Agenti che gestiscono l'inbox email, prenotano riunioni, analizzano report finanziari e producono sintesi esecutive senza intervento manuale.</p></div>
+    <div class="card fi"><div class="ci cic">🛒</div><span class="badge bb">Generativa</span><h3>E-commerce e retail</h3><p>Descrizioni prodotto personalizzate, immagini promozionali generate su richiesta e assistenti clienti disponibili 24/7 in tutte le lingue del mondo.</p></div>
+    <div class="card v fi"><div class="ci civ">🔬</div><span class="badge ba">Agentiva</span><h3>Ricerca scientifica</h3><p>Agenti che scansionano migliaia di articoli scientifici, identificano lacune nella letteratura e formulano nuove ipotesi di ricerca in modo semi-autonomo.</p></div>
+    <div class="card fi"><div class="ci cic">🎓</div><span class="badge bb">Generativa</span><h3>Educazione personalizzata</h3><p>Tutor AI che adattano spiegazioni, esercizi e ritmo di apprendimento al livello e allo stile cognitivo di ogni singolo studente.</p></div>
+    <div class="card v fi"><div class="ci civ">🏗</div><span class="badge ba">Agentiva</span><h3>Sviluppo software</h3><p>Agenti come Devin e Cursor scrivono interi moduli, eseguono test, correggono bug e aprono pull request in autonomia, riducendo significativamente i tempi di sviluppo.</p></div>
+  </div>
+
+  <h3 style="margin-top:3rem;margin-bottom:1.5rem;">📈 Maturità tecnologica — stato attuale 2025</h3>
+  <div class="diag fi">
+    <div class="dt">// Livello di adozione e affidabilità in contesti produttivi</div>
+    <div class="pw">
+      <div class="pr"><span class="pl">Generazione testo</span><div class="pb"><div class="pf" style="width:93%;background:var(--cyan);"></div></div><span class="pp">93%</span></div>
+      <div class="pr"><span class="pl">Generazione immagini</span><div class="pb"><div class="pf" style="width:86%;background:var(--cyan);"></div></div><span class="pp">86%</span></div>
+      <div class="pr"><span class="pl">Generazione codice</span><div class="pb"><div class="pf" style="width:80%;background:var(--violet);"></div></div><span class="pp">80%</span></div>
+      <div class="pr"><span class="pl">Agenti semplici</span><div class="pb"><div class="pf" style="width:62%;background:var(--violet);"></div></div><span class="pp">62%</span></div>
+      <div class="pr"><span class="pl">Sistemi multi-agente</span><div class="pb"><div class="pf" style="width:38%;background:var(--green);"></div></div><span class="pp">38%</span></div>
+      <div class="pr"><span class="pl">Autonomia complessa</span><div class="pb"><div class="pf" style="width:18%;background:var(--amber);"></div></div><span class="pp">18%</span></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════ 04 — CLAUDE ═══════════════ -->
+<div id="claude" class="w wd">
+<div class="inner">
+  <div class="sh fi">
+    <div class="pill pv"><div class="dot-b"></div>Sezione 04</div>
+    <h2>Claude di Anthropic</h2>
+    <p class="slead">Claude è uno degli assistenti AI più avanzati disponibili oggi, sviluppato con un focus particolare sulla sicurezza, l'utilità concreta e la correttezza nelle risposte.</p>
+  </div>
+
+  <div class="claude-hero fi">
+    <div class="claudelogo">🤖</div>
+    <h2>Chi è <span class="cv">Claude</span>?</h2>
+    <p style="color:var(--text2);max-width:58ch;line-height:1.75;margin-bottom:1.2rem;font-size:.95rem;">Claude è un grande modello linguistico (LLM) creato da <strong>Anthropic</strong>, azienda fondata nel 2021 da ex ricercatori di OpenAI. A differenza di altri modelli, Claude è stato progettato fin dall'inizio con il principio di essere <strong>utile, innocuo e onesto</strong> — una filosofia chiamata "Constitutional AI".</p>
+    <p style="color:var(--text2);max-width:58ch;line-height:1.75;font-size:.95rem;">Claude eccelle in analisi complesse, scrittura lunga e strutturata, ragionamento su documenti, programmazione avanzata e conversazioni sfumate. È disponibile tramite claude.ai, le API di Anthropic e numerose integrazioni.</p>
+  </div>
+
+  <h3 style="margin-bottom:1.3rem;">🗂 La famiglia di modelli Claude (2025)</h3>
+  <div class="mcards fi">
+    <div class="mcard"><div class="mtag">Massima potenza</div><h4>Claude Opus</h4><p>Il modello più capace della famiglia. Ideale per compiti complessi, analisi approfondite e ragionamento multi-fase che richiedono la massima qualità.</p><span class="mbadge">claude-opus-4-5 · 200K token di contesto</span></div>
+    <div class="mcard"><div class="mtag">Bilanciato</div><h4>Claude Sonnet</h4><p>Il punto di equilibrio ottimale tra capacità e velocità. Eccellente per uso quotidiano, coding, scrittura e la maggior parte dei casi d'uso aziendali.</p><span class="mbadge">claude-sonnet-4-6 · 200K token di contesto</span></div>
+    <div class="mcard"><div class="mtag">Veloce ed economico</div><h4>Claude Haiku</h4><p>Il modello più rapido ed economico. Perfetto per applicazioni ad alto volume, classificazione, riassunti rapidi e casi in cui la latenza è critica.</p><span class="mbadge">claude-haiku-4-5 · 200K token di contesto</span></div>
+  </div>
+
+  <h3 style="margin-top:3rem;margin-bottom:1rem;">🛡 Constitutional AI — come Anthropic rende Claude sicuro</h3>
+  <div class="diag fi">
+    <div class="dt">// Il processo di Constitutional AI — differenziatore chiave di Anthropic</div>
+    <div class="flow">
+      <div class="fnode"><div class="fbox fc">Costituzione<br>scritta</div><div class="fsub">Principi etici e di comportamento</div></div>
+      <div class="farr">→</div>
+      <div class="fnode"><div class="fbox">Auto-critica<br>del modello</div><div class="fsub">Valuta le proprie risposte</div></div>
+      <div class="farr">→</div>
+      <div class="fnode"><div class="fbox fv">Revisione<br>autonoma</div><div class="fsub">Riscrive le risposte problematiche</div></div>
+      <div class="farr">→</div>
+      <div class="fnode"><div class="fbox">Feedback<br>umano (RLHF)</div><div class="fsub">Validazione con valutatori</div></div>
+      <div class="farr">→</div>
+      <div class="fnode"><div class="fbox fg">Claude<br>allineato</div><div class="fsub">Utile, sicuro, onesto</div></div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:2.5rem;margin-bottom:1.3rem;">✨ Capacità principali di Claude</h3>
+  <div class="g3">
+    <div class="card v fi"><div class="ci civ">📚</div><span class="badge bb">Principiante</span><h3>Analisi di documenti lunghi</h3><p>Con 200.000 token di contesto (circa 150.000 parole), Claude può leggere interi libri, report completi o grandi codebase e rispondere con precisione su qualsiasi parte.</p></div>
+    <div class="card fi"><div class="ci cic">💻</div><span class="badge bb">Principiante</span><h3>Programmazione avanzata</h3><p>Claude scrive, spiega, corregge e ottimizza codice in 20+ linguaggi. Claude Code è un agente specializzato che lavora direttamente sul tuo repository da terminale.</p></div>
+    <div class="card g fi"><div class="ci cig">🔬</div><span class="badge bm">Intermedio</span><h3>Ragionamento esteso</h3><p>I modelli con "extended thinking" possono ragionare in modo approfondito prima di rispondere, aumentando significativamente la qualità su problemi complessi e sfide matematiche.</p></div>
+    <div class="card v fi"><div class="ci civ">👁</div><span class="badge bm">Intermedio</span><h3>Visione (multimodale)</h3><p>Claude analizza immagini, grafici, screenshot, diagrammi e documenti scansionati, rispondendo a domande sul contenuto visivo con alta accuratezza.</p></div>
+    <div class="card fi"><div class="ci cic">🖥</div><span class="badge ba">Avanzato</span><h3>Computer Use (agentiva)</h3><p>Claude può controllare un computer reale: navigare siti web, compilare moduli, usare applicazioni desktop — uno degli esempi più avanzati di AI agentiva disponibili pubblicamente.</p></div>
+    <div class="card g fi"><div class="ci cig">🌍</div><span class="badge bb">Principiante</span><h3>Multilingua nativo</h3><p>Claude comprende e genera testo in oltre 50 lingue con qualità elevata, inclusi italiano, arabo e cinese, senza degradazione qualitativa rispetto all'inglese.</p></div>
+  </div>
+
+  <h3 style="margin-top:3rem;margin-bottom:1.3rem;">🚀 Come iniziare a usare Claude</h3>
+  <div class="steps">
+    <div class="step fi"><div class="snum">01</div><div><h4>Interfaccia web — claude.ai</h4><p>Il modo più semplice. Vai su <strong>claude.ai</strong>, crea un account gratuito e inizia subito a chattare. Il piano gratuito include l'accesso a Claude Sonnet con alcune limitazioni giornaliere sul numero di messaggi.</p></div></div>
+    <div class="step fi"><div class="snum">02</div><div><h4>API Anthropic — per sviluppatori</h4><p>Integra Claude nelle tue applicazioni tramite l'API REST disponibile su <strong>console.anthropic.com</strong>. Supporta Python, JavaScript/TypeScript e qualsiasi linguaggio con chiamate HTTP standard.</p></div></div>
+    <div class="step fi"><div class="snum">03</div><div><h4>Claude Code — per la programmazione</h4><p>Uno strumento da linea di comando che porta Claude nel tuo terminale. Naviga il codebase, esegue comandi, corregge bug e implementa nuove funzionalità in modo semi-autonomo.</p></div></div>
+    <div class="step fi"><div class="snum">04</div><div><h4>Integrazioni e piattaforme partner</h4><p>Claude è disponibile tramite Amazon Bedrock, Google Cloud Vertex AI e centinaia di applicazioni di terze parti come Notion, Slack, Cursor, Replit e molte altre.</p></div></div>
+  </div>
+
+  <h3 style="margin-top:2.5rem;margin-bottom:1rem;">💻 Prima chiamata API con Claude</h3>
+  <div class="code fi">
+    <div class="cbar"><div class="cdots"><div class="cd cdr"></div><div class="cd cdy"></div><div class="cd cdg"></div></div><span class="clbl">Python — Anthropic SDK</span></div>
+    <pre><span class="cm"># Installazione: pip install anthropic</span>
+<span class="kw">import</span> <span class="vr">anthropic</span>
+
+<span class="vr">client</span> = <span class="vr">anthropic</span>.<span class="fn">Anthropic</span>()  <span class="cm"># usa ANTHROPIC_API_KEY dalla variabile d'ambiente</span>
+
+<span class="cm"># Chiamata semplice: domanda → risposta</span>
+<span class="vr">message</span> = <span class="vr">client</span>.<span class="vr">messages</span>.<span class="fn">create</span>(
+  <span class="vr">model</span>=<span class="st">"claude-sonnet-4-6"</span>,
+  <span class="vr">max_tokens</span>=<span class="nm">1024</span>,
+  <span class="vr">messages</span>=[
+    {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"Spiega la differenza tra AI generativa e AI agentiva in 3 frasi."</span>}
+  ]
+)
+<span class="fn">print</span>(<span class="vr">message</span>.<span class="vr">content</span>[<span class="nm">0</span>].<span class="vr">text</span>)
+
+<span class="cm"># Con system prompt per personalizzare il comportamento del modello</span>
+<span class="vr">risposta</span> = <span class="vr">client</span>.<span class="vr">messages</span>.<span class="fn">create</span>(
+  <span class="vr">model</span>=<span class="st">"claude-sonnet-4-6"</span>,
+  <span class="vr">max_tokens</span>=<span class="nm">2048</span>,
+  <span class="vr">system</span>=<span class="st">"Sei un esperto di AI che spiega concetti complessi in italiano in modo semplice, con esempi pratici e analogie quotidiane."</span>,
+  <span class="vr">messages</span>=[
+    {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"Come funziona il meccanismo di attenzione nei Transformer?"</span>}
+  ]
+)
+<span class="fn">print</span>(<span class="vr">risposta</span>.<span class="vr">content</span>[<span class="nm">0</span>].<span class="vr">text</span>)</pre>
+  </div>
+
+  <div class="callout cpv fi">
+    <span class="cico">🔐</span>
+    <p><strong>Privacy e sicurezza:</strong> Anthropic non utilizza i dati inviati tramite API per addestrare i modelli (con piano a pagamento). L'azienda pubblica regolarmente ricerche sulla sicurezza dell'AI ed è tra i pionieri nello studio dei rischi dei sistemi avanzati.</p>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════ 05 — VIDEO ═══════════════ -->
+<div id="video" class="w">
+<div class="inner">
+  <div class="sh fi">
+    <div class="pill pc"><div class="dot-b"></div>Sezione 05</div>
+    <h2>Impara guardando</h2>
+    <p class="slead">Spiegazioni visive per assimilare concetti complessi in modo intuitivo. Clicca su una card per cercare i tutorial più aggiornati su YouTube.</p>
+  </div>
+
+  <div class="vgrid">
+    <div class="vcard fi" onclick="openVideo('https://www.youtube.com/results?search_query=come+funziona+LLM+transformer+italiano+2024')">
+      <div class="vthumb vg1"><div class="vbg"></div><span class="vico">🧠</span><div class="play">▶</div></div>
+      <div class="vinfo"><div class="vmeta"><span class="badge bb" style="margin:0">Principiante</span><span class="vdur">⏱ ~15 min</span></div><h3>Come funziona un LLM</h3><p>Dai Transformer al meccanismo di attenzione: la tecnologia fondamentale che ha rivoluzionato l'AI, spiegata con animazioni.</p></div>
+    </div>
+    <div class="vcard fi" onclick="openVideo('https://www.youtube.com/results?search_query=stable+diffusion+come+funziona+spiegazione+italiano')">
+      <div class="vthumb vg2"><div class="vbg"></div><span class="vico">🎨</span><div class="play">▶</div></div>
+      <div class="vinfo"><div class="vmeta"><span class="badge bb" style="margin:0">Principiante</span><span class="vdur">⏱ ~12 min</span></div><h3>AI che genera immagini</h3><p>Come la diffusione inversa trasforma rumore casuale nell'immagine che hai descritto nel prompt.</p></div>
+    </div>
+    <div class="vcard fi" onclick="openVideo('https://www.youtube.com/results?search_query=agenti+AI+autonomi+tutorial+italiano+2025')">
+      <div class="vthumb vg3"><div class="vbg"></div><span class="vico">⚡</span><div class="play">▶</div></div>
+      <div class="vinfo"><div class="vmeta"><span class="badge bm" style="margin:0">Intermedio</span><span class="vdur">⏱ ~20 min</span></div><h3>Agenti AI in azione</h3><p>Come costruire un agente autonomo che naviga il web, scrive codice e invia email — demo pratica con codice reale.</p></div>
+    </div>
+    <div class="vcard fi" onclick="openVideo('https://www.youtube.com/results?search_query=Claude+Anthropic+tutorial+italiano+come+usare+2025')">
+      <div class="vthumb vg4"><div class="vbg"></div><span class="vico">🤖</span><div class="play">▶</div></div>
+      <div class="vinfo"><div class="vmeta"><span class="badge bb" style="margin:0">Principiante</span><span class="vdur">⏱ ~10 min</span></div><h3>Introduzione a Claude</h3><p>Come sfruttare al massimo Claude di Anthropic: prompt efficaci, casi d'uso avanzati e confronto con altri modelli.</p></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════ 06 — QUIZ ═══════════════ -->
+<div id="quiz" class="w wd">
+<div class="inner">
+  <div class="sh fi">
+    <div class="pill pg"><div class="dot-b"></div>Sezione 06 — Quiz</div>
+    <h2>Metti alla prova<br>quello che hai imparato</h2>
+    <p class="slead">Clicca su ogni domanda per scoprire la risposta. Un modo rapido per fissare i concetti chiave.</p>
+  </div>
+
+  <div class="quiz fi">
+    <div class="qi" onclick="toggleQ(this)"><div class="qq"><span class="qn">01</span><span>Qual è la differenza principale tra AI generativa e AI agentiva?</span><div class="qt">+</div></div><div class="qa">L'AI generativa produce contenuti (testo, immagini, audio) in risposta a una singola richiesta. L'AI agentiva invece <strong>pianifica ed esegue</strong>: usa strumenti reali, compie azioni concrete nel mondo digitale e porta a termine obiettivi articolati in più passi, spesso senza intervento umano continuo.</div></div>
+    <div class="qi" onclick="toggleQ(this)"><div class="qq"><span class="qn">02</span><span>Cosa significa "tokenizzazione" in un modello linguistico?</span><div class="qt">+</div></div><div class="qa">La tokenizzazione è il processo di conversione del testo in unità numeriche chiamate "token". Una parola può corrispondere a 1–3 token. Ad esempio "intelligenza" potrebbe diventare [intel, ligenza]. Questa rappresentazione numerica permette al modello di elaborare il linguaggio attraverso operazioni matematiche su vettori ad alta dimensione.</div></div>
+    <div class="qi" onclick="toggleQ(this)"><div class="qq"><span class="qn">03</span><span>Cos'è il pattern ReAct negli agenti AI?</span><div class="qt">+</div></div><div class="qa"><strong>ReAct = REasoning + ACTing.</strong> L'agente alterna due fasi in ciclo: prima <em>ragiona</em> su cosa fare (pensiero esplicito), poi <em>agisce</em> usando uno strumento, poi <em>osserva</em> il risultato. Ripete finché l'obiettivo è raggiunto. È il pattern alla base della maggior parte degli agenti AI moderni.</div></div>
+    <div class="qi" onclick="toggleQ(this)"><div class="qq"><span class="qn">04</span><span>Cos'è il RLHF e perché è fondamentale?</span><div class="qt">+</div></div><div class="qa"><strong>RLHF = Reinforcement Learning from Human Feedback.</strong> Dopo il pre-addestramento, valutatori umani confrontano coppie di risposte indicando quale è migliore. Queste preferenze addestrano un "modello di ricompensa" che guida il fine-tuning finale. È la principale ragione per cui Claude e ChatGPT sono utili, sicuri e piacevoli da utilizzare.</div></div>
+    <div class="qi" onclick="toggleQ(this)"><div class="qq"><span class="qn">05</span><span>Cosa sono le "allucinazioni" nei modelli linguistici?</span><div class="qt">+</div></div><div class="qa">Le <strong>allucinazioni</strong> sono risposte generate dal modello con apparente sicurezza, ma false o non verificabili. Accade perché il modello non "conosce" la verità in senso assoluto: predice sequenze linguistiche plausibili basandosi sui pattern appresi. È fondamentale verificare sempre le informazioni critiche su fonti affidabili, specialmente in ambito medico, legale o scientifico.</div></div>
+    <div class="qi" onclick="toggleQ(this)"><div class="qq"><span class="qn">06</span><span>Cos'è la "Constitutional AI" di Anthropic?</span><div class="qt">+</div></div><div class="qa"><strong>Constitutional AI</strong> è l'approccio sviluppato da Anthropic per allineare Claude a valori etici in modo scalabile. Invece di dipendere esclusivamente da valutatori umani, il modello impara una "costituzione" di principi e usa l'auto-critica per valutare e riscrivere le proprie risposte problematiche in modo autonomo.</div></div>
+    <div class="qi" onclick="toggleQ(this)"><div class="qq"><span class="qn">07</span><span>Cosa si intende per "context window" (finestra contestuale)?</span><div class="qt">+</div></div><div class="qa">La <strong>finestra contestuale</strong> è la quantità massima di testo che il modello può elaborare in una singola sessione, misurata in token. Claude ha una finestra di 200.000 token (circa 150.000 parole), il che significa che può analizzare interi libri o codebase di grandi dimensioni in una sola chiamata.</div></div>
+    <div class="qi" onclick="toggleQ(this)"><div class="qq"><span class="qn">08</span><span>Qual è la differenza tra modello "base" e modello "istruito"?</span><div class="qt">+</div></div><div class="qa">Un <strong>modello base</strong> (fondazionale) è addestrato solo a completare testo: predice la parola successiva. Un <strong>modello istruito</strong> (instruction-tuned) ha ricevuto ulteriore addestramento per seguire istruzioni, rispondere a domande e comportarsi da assistente conversazionale. Claude e ChatGPT sono modelli istruiti costruiti sopra modelli fondazionali.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="flogo">AI<span>Academy</span></span>
+  <div class="flinks">
+    <a href="#generativa">AI Generativa</a>
+    <a href="#agentiva">AI Agentiva</a>
+    <a href="#confronto">Confronto</a>
+    <a href="#claude">Claude</a>
+    <a href="#video">Video</a>
+    <a href="#quiz">Quiz</a>
+  </div>
+  <p>Realizzato per rendere l'intelligenza artificiale accessibile a tutti — studenti, professionisti e curiosi.</p>
+  <p style="margin-top:.6rem;font-size:.62rem;opacity:.4;">Contenuti a scopo educativo · Aggiornato 2025 · Gratuito e aperto</p>
+</footer>
+
+<script>
+function toggleQ(el) {
+  const open = el.classList.contains('open');
+  document.querySelectorAll('.qi').forEach(i => i.classList.remove('open'));
+  if (!open) el.classList.add('open');
+}
+function openVideo(url) { window.open(url,'_blank'); }
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('vis');
+      e.target.querySelectorAll('.fi').forEach((c,i) => {
+        setTimeout(() => c.classList.add('vis'), i * 70);
+      });
+    }
+  });
+}, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+setTimeout(() => {
+  document.querySelectorAll('.fi').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('vis');
+  });
+}, 80);
+</script>
+</body>
+</html>
