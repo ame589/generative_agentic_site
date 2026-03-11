@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Academy — Intelligenza Artificiale Generativa e Agentiva</title>
+<title>AI Academy — Intelligenza Artificiale Generativa e Agentica</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -234,6 +234,50 @@ footer p{color:var(--muted);font-size:.78rem;font-family:'DM Mono',monospace;}
 .flinks a{color:var(--muted);text-decoration:none;font-size:.75rem;font-family:'DM Mono',monospace;transition:color .2s;}
 .flinks a:hover{color:var(--cyan);}
 
+/* ABOUT / AUTHOR SECTION */
+.about-wrap{display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:start;}
+.about-photo{position:relative;flex-shrink:0;}
+.photo-ring{width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--violet));padding:3px;box-shadow:0 0 40px rgba(0,212,255,.3),0 0 80px rgba(155,111,245,.15);}
+.photo-inner{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,#1a2540,#0d1830);display:flex;align-items:center;justify-content:center;font-size:4.5rem;overflow:hidden;}
+.photo-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.photo-badge{position:absolute;bottom:8px;right:-8px;background:linear-gradient(135deg,var(--cyan),var(--violet));border-radius:100px;padding:.3rem .75rem;font-family:'DM Mono',monospace;font-size:.6rem;color:#000;font-weight:700;letter-spacing:.08em;white-space:nowrap;}
+.about-name{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:.4rem;}
+.about-role{font-family:'DM Mono',monospace;font-size:.8rem;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.4rem;}
+.about-bio{color:var(--text2);font-size:.95rem;line-height:1.8;max-width:58ch;margin-bottom:1.8rem;}
+.about-bio strong{color:var(--text);font-weight:500;}
+.about-passion{background:linear-gradient(135deg,rgba(155,111,245,.1),rgba(0,212,255,.08));border:1px solid rgba(155,111,245,.22);border-radius:var(--radius);padding:1.2rem 1.5rem;margin-bottom:1.8rem;font-size:.9rem;color:var(--text2);line-height:1.7;}
+.about-passion::before{content:'✨ ';font-size:1rem;}
+.skill-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.8rem;}
+.chip{font-family:'DM Mono',monospace;font-size:.65rem;padding:.28rem .75rem;border-radius:100px;letter-spacing:.06em;border:1px solid var(--border);color:var(--text2);background:var(--surface2);transition:all .2s;}
+.chip.cc-chip{border-color:rgba(0,212,255,.28);color:var(--cyan);background:var(--cyan-dim);}
+.chip.cv-chip{border-color:rgba(155,111,245,.28);color:var(--violet);background:var(--violet-dim);}
+.chip.cg-chip{border-color:rgba(0,229,122,.2);color:var(--green);background:var(--green-dim);}
+.timeline{display:flex;flex-direction:column;gap:.85rem;margin-top:2.5rem;}
+.tl-item{display:grid;grid-template-columns:130px 1fr;gap:1.2rem;align-items:start;}
+.tl-date{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);padding-top:.2rem;text-align:right;}
+.tl-dot-line{display:flex;flex-direction:column;align-items:center;gap:0;}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:var(--cyan);flex-shrink:0;margin-top:.35rem;box-shadow:0 0 8px rgba(0,212,255,.5);}
+.tl-line{width:1px;flex:1;background:linear-gradient(var(--border),transparent);min-height:30px;}
+.tl-body{padding-bottom:.5rem;}
+.tl-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:.15rem;}
+.tl-company{font-size:.75rem;color:var(--cyan);font-family:'DM Mono',monospace;margin-bottom:.3rem;}
+.tl-desc{font-size:.78rem;color:var(--muted);line-height:1.55;}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.9rem;margin-top:2rem;}
+.cert-card{background:var(--surface2);border:1px solid var(--border);border-radius:11px;padding:1rem 1.1rem;display:flex;align-items:center;gap:.8rem;transition:all .2s;}
+.cert-card:hover{border-color:var(--border-strong);transform:translateY(-2px);}
+.cert-icon{font-size:1.4rem;flex-shrink:0;}
+.cert-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.78rem;line-height:1.3;}
+.cert-issuer{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--muted);margin-top:.2rem;}
+.social-links{display:flex;gap:.8rem;flex-wrap:wrap;}
+.slink{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem 1rem;border-radius:8px;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.06em;text-decoration:none;border:1px solid var(--border);color:var(--text2);background:var(--surface2);transition:all .2s;}
+.slink:hover{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-dim);}
+@media(max-width:768px){
+  .about-wrap{grid-template-columns:1fr;gap:2rem;}
+  .photo-ring{width:130px;height:130px;}
+  .tl-item{grid-template-columns:90px 1fr;}
+  .tl-date{font-size:.6rem;}
+}
+
 /* FADE */
 .fi{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s;}
 .fi.vis{opacity:1;transform:translateY(0);}
@@ -260,11 +304,13 @@ footer p{color:var(--muted);font-size:.78rem;font-family:'DM Mono',monospace;}
 <nav>
   <a href="#" class="logo">AI<span>Academy</span></a>
   <ul class="nav-links">
+    <li><a href="#about">Chi sono</a></li>
     <li><a href="#generativa">Generativa</a></li>
-    <li><a href="#agentiva">Agentiva</a></li>
-    <li><a href="#confronto">Confronto</a></li>
+    <li><a href="#agentica">Agentica</a></li>
     <li><a href="#claude">Claude</a></li>
-    <li><a href="#video">Video</a></li>
+    <li><a href="#strumenti">Strumenti</a></li>
+    <li><a href="#rag">RAG</a></li>
+    <li><a href="#glossario">Glossario</a></li>
     <li><a href="#quiz">Quiz</a></li>
   </ul>
   <span class="nav-badge"><div class="dot-b"></div>Gratuito</span>
@@ -274,7 +320,7 @@ footer p{color:var(--muted);font-size:.78rem;font-family:'DM Mono',monospace;}
 <section class="hero">
   <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
   <div class="eyebrow">Impara l'Intelligenza Artificiale Moderna</div>
-  <h1>Capire l'AI<br><span class="cc">Generativa</span> e<br><span class="cv">Agentiva</span></h1>
+  <h1>Capire l'AI<br><span class="cc">Generativa</span> e<br><span class="cv">Agentica</span></h1>
   <p class="lead">Tutorial chiari, esempi pratici, schemi visivi e video per comprendere l'AI moderna — accessibile a tutti, anche partendo da zero.</p>
   <div class="btn-row">
     <a href="#generativa" class="btn btn-p">Inizia il percorso →</a>
@@ -285,11 +331,127 @@ footer p{color:var(--muted);font-size:.78rem;font-family:'DM Mono',monospace;}
 
 <!-- STATS -->
 <div class="stats-bar">
-  <div class="stat"><span class="sn">5</span><span class="sl">Sezioni tematiche</span></div>
-  <div class="stat"><span class="sn">15+</span><span class="sl">Tutorial pratici</span></div>
+  <div class="stat"><span class="sn">11</span><span class="sl">Sezioni tematiche</span></div>
+  <div class="stat"><span class="sn">40+</span><span class="sl">Tutorial pratici</span></div>
   <div class="stat"><span class="sn">0€</span><span class="sl">Completamente gratuito</span></div>
   <div class="stat"><span class="sn">∞</span><span class="sl">Livelli di apprendimento</span></div>
 </div>
+
+<!-- ═══════════════ 00 — CHI SONO ═══════════════ -->
+<div id="about" class="w wd">
+<div class="inner">
+  <div class="sh fi">
+    <div class="pill pa"><div class="dot-b"></div>Chi sono</div>
+    <h2>L'autore di questo progetto</h2>
+  </div>
+
+  <div class="about-wrap fi">
+    <div class="about-photo">
+      <div class="photo-ring">
+        <div class="photo-inner">👨‍💻</div>
+      </div>
+      <div class="photo-badge">Data Architect · AI Enthusiast</div>
+    </div>
+    <div>
+      <div class="about-name">Amedeo <span class="cc">Tortora</span></div>
+      <div class="about-role">Senior Data Engineer &amp; Data Architect · Milano, Italia</div>
+      
+<p class="about-bio">
+  Ciao! Mi chiamo <strong>Amedeo Tortora</strong>. Sono un <strong>Data Architect / Senior Data Engineer</strong> con oltre 10 anni di esperienza nella progettazione e implementazione di sistemi Big Data e piattaforme di Unified Analytics (batch e streaming). 
+  Lavoro quotidianamente con <strong>Google Cloud Platform</strong>, Apache Beam/Dataflow, Databricks, Kafka, DBT e altre tecnologie cloud-native per progettare pipeline dati scalabili, data warehouse e soluzioni ETL che trasformano dati grezzi in insight azionabili. 
+  Attualmente sono in <strong>NTT DATA Italia</strong>, dove mi occupo di progettare, implementare e ottimizzare pipeline e modelli dati per supportare decisioni di business basate sui dati.
+</p>
+
+      <div class="about-passion">
+        Negli ultimi anni ho iniziato un percorso di esplorazione profonda nel mondo dell'<strong>intelligenza artificiale generativa e agentica</strong>. Vedere come i modelli linguistici stanno trasformando il modo in cui lavoriamo con i dati — automatizzando pipeline, generando codice, ragionando su documenti complessi — mi ha convinto a costruire questa risorsa: un posto accessibile a tutti per capire davvero come funziona l'AI moderna.
+      </div>
+      <div class="skill-chips">
+        <span class="chip cc-chip">Google Cloud Platform</span>
+        <span class="chip cc-chip">BigQuery</span>
+        <span class="chip cc-chip">Apache Beam / Dataflow</span>
+        <span class="chip cc-chip">Python</span>
+        <span class="chip cv-chip">Databricks</span>
+        <span class="chip cv-chip">DBT</span>
+        <span class="chip cv-chip">Kafka</span>
+        <span class="chip cg-chip">AI Generativa</span>
+        <span class="chip cg-chip">AI Agentica</span>
+        <span class="chip cg-chip">LLM &amp; Prompt Engineering</span>
+        <span class="chip">SQL Avanzato</span>
+        <span class="chip">Spring Boot</span>
+        <span class="chip">Docker · Kubernetes</span>
+      </div>
+      <div class="social-links">
+        <a href="mailto:a.tortora89@gmail.com" class="slink">📧 a.tortora89@gmail.com</a>
+        <a href="https://www.linkedin.com/in/amedeo-tortora" target="_blank" class="slink">🔗 LinkedIn</a>
+        <a href="https://credentials.databricks.com/2550aa55-2416-4fd6-9993-e300bf695d6f" target="_blank" class="slink">🏆 Certificazioni</a>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:3.5rem;margin-bottom:1.5rem;">🗓 Percorso professionale</h3>
+  <div class="timeline fi">
+    <div class="tl-item">
+      <div class="tl-date">10/2021 — oggi</div>
+      <div>
+        <div class="tl-dot" style="background:var(--cyan);box-shadow:0 0 10px rgba(0,212,255,.6);margin-bottom:.5rem;"></div>
+        <div class="tl-body"><div class="tl-title">Data Architect</div><div class="tl-company">NTT DATA Italia</div><div class="tl-desc">Progettazione e implementazione di pipeline dati su GCP (Dataflow, BigQuery, Pub/Sub, AlloyDB), data modeling, ETL con Airflow e Python, soluzioni Databricks su Azure e DBT.</div></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">05/2020 — 10/2021</div>
+      <div>
+        <div class="tl-dot" style="background:var(--violet);margin-bottom:.5rem;"></div>
+        <div class="tl-body"><div class="tl-title">Software Architect</div><div class="tl-company">Engineering Ingegneria Informatica S.p.A</div><div class="tl-desc">Progettazione pipeline dati con Talend Open Studio, ElasticSearch, Apache Camel Fuse e Kafka per sistemi enterprise ad alto volume.</div></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">10/2019 — 04/2020</div>
+      <div>
+        <div class="tl-dot" style="background:var(--green);margin-bottom:.5rem;"></div>
+        <div class="tl-body"><div class="tl-title">Senior Developer</div><div class="tl-company">Engineering Ingegneria Informatica S.p.A</div><div class="tl-desc">Sviluppo di integrazioni SaaS via API REST per marketplace interno. Stack: Spring Boot, Docker, OpenShift/Kubernetes, Prometheus.</div></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">10/2017 — 05/2019</div>
+      <div>
+        <div class="tl-dot" style="background:var(--amber);margin-bottom:.5rem;"></div>
+        <div class="tl-body"><div class="tl-title">Team Leader / Senior Developer</div><div class="tl-company">Engineering Ingegneria Informatica S.p.A</div><div class="tl-desc">Sviluppo con architettura a microservizi: Spring Cloud, Spring Eureka, Angular 4, Hibernate.</div></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">2015 — 2017</div>
+      <div>
+        <div class="tl-dot" style="background:var(--muted);margin-bottom:.5rem;"></div>
+        <div class="tl-body"><div class="tl-title">Junior Java Developer</div><div class="tl-company">Engineering Ingegneria Informatica S.p.A</div><div class="tl-desc">Sviluppo applicazioni Java enterprise con JSF2, Spring Framework e Hibernate.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:3rem;margin-bottom:1.2rem;">🏆 Certificazioni professionali</h3>
+  <div class="cert-grid fi">
+    <a href="https://credentials.databricks.com/2550aa55-2416-4fd6-9993-e300bf695d6f" target="_blank" class="cert-card" style="text-decoration:none;color:inherit;">
+      <span class="cert-icon">🔶</span><div><div class="cert-name">Databricks Fundamentals</div><div class="cert-issuer">Databricks · Aprile 2024</div></div>
+    </a>
+    <a href="https://www.credential.net/2e58f688-2c41-48c5-a402-61c396548566" target="_blank" class="cert-card" style="text-decoration:none;color:inherit;">
+      <span class="cert-icon">☁️</span><div><div class="cert-name">GCP Professional Cloud Architect</div><div class="cert-issuer">Google · Dicembre 2022</div></div>
+    </a>
+    <a href="https://www.credential.net/dddb1926-c506-4408-a2ee-4f3a09afd247" target="_blank" class="cert-card" style="text-decoration:none;color:inherit;">
+      <span class="cert-icon">📊</span><div><div class="cert-name">GCP Professional Data Engineer</div><div class="cert-issuer">Google · Luglio 2022</div></div>
+    </a>
+    <a href="https://www.credly.com/badges/f2a648dc-c293-405c-bac6-7b9cda7c3723" target="_blank" class="cert-card" style="text-decoration:none;color:inherit;">
+      <span class="cert-icon">🔁</span><div><div class="cert-name">Professional Scrum Master I</div><div class="cert-issuer">Scrum.org · Dicembre 2020</div></div>
+    </a>
+    <div class="cert-card">
+      <span class="cert-icon">⚙️</span><div><div class="cert-name">DevOps Foundation</div><div class="cert-issuer">DevOps Institute · Novembre 2019</div></div>
+    </div>
+    <div class="cert-card">
+      <span class="cert-icon">🎓</span><div><div class="cert-name">Laurea Informatica</div><div class="cert-issuer">Università di Salerno · 2015–2019</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
 
 <!-- ═══════════════ 01 — AI GENERATIVA ═══════════════ -->
 <div id="generativa" class="w">
@@ -373,18 +535,18 @@ tono amichevole, nessun termine tecnico senza spiegazione."</span>
 
 <div class="divider"></div>
 
-<!-- ═══════════════ 02 — AI AGENTIVA ═══════════════ -->
-<div id="agentiva" class="w wd">
+<!-- ═══════════════ 02 — AI AGENTICA ═══════════════ -->
+<div id="agentica" class="w wd">
 <div class="inner">
   <div class="sh fi">
     <div class="pill pv"><div class="dot-b"></div>Sezione 02</div>
-    <h2>AI Agentiva</h2>
-    <p class="slead">L'AI agentiva non si limita a rispondere: <em>pianifica ed esegue azioni</em>. Usa strumenti reali, si adatta ai risultati e porta a termine obiettivi complessi in modo autonomo.</p>
+    <h2>AI Agentica</h2>
+    <p class="slead">L'AI agentica non si limita a rispondere: <em>pianifica ed esegue azioni</em>. Usa strumenti reali, si adatta ai risultati e porta a termine obiettivi complessi in modo autonomo.</p>
   </div>
 
   <div class="callout cw fi">
     <span class="cico">⚡</span>
-    <p><strong>Differenza fondamentale:</strong> L'AI generativa risponde a una domanda. L'AI agentiva <strong>esegue un piano articolato</strong> in più passi, usando strumenti concreti (web, API, codice, email, file) e prendendo decisioni autonome lungo il percorso.</p>
+    <p><strong>Differenza fondamentale:</strong> L'AI generativa risponde a una domanda. L'AI agentica <strong>esegue un piano articolato</strong> in più passi, usando strumenti concreti (web, API, codice, email, file) e prendendo decisioni autonome lungo il percorso.</p>
   </div>
 
   <div class="diag fi">
@@ -435,7 +597,7 @@ tono amichevole, nessun termine tecnico senza spiegazione."</span>
     </div>
   </div>
 
-  <h3 style="margin-top:2.5rem;margin-bottom:1.3rem;">🗂 Tipologie di architetture agentive</h3>
+  <h3 style="margin-top:2.5rem;margin-bottom:1.3rem;">🗂 Tipologie di architetture agentiche</h3>
   <div class="g3">
     <div class="card fi"><div class="ci cic">🔗</div><span class="badge bm">Intermedio</span><h3>Agenti a catena</h3><p>I passi si eseguono in sequenza: l'output di ogni fase diventa l'input di quella successiva. Adatti a flussi di lavoro lineari e prevedibili.</p></div>
     <div class="card v fi"><div class="ci civ">🌐</div><span class="badge ba">Avanzato</span><h3>Sistemi multi-agente</h3><p>Un agente orchestratore coordina agenti specializzati (ricercatore, scrittore, revisore, programmatore), ognuno esperto nel proprio dominio.</p></div>
@@ -484,7 +646,7 @@ tono amichevole, nessun termine tecnico senza spiegazione."</span>
   <span class="vr">tools</span>=<span class="vr">tools</span>,
   <span class="vr">messages</span>=[{
     <span class="st">"role"</span>: <span class="st">"user"</span>,
-    <span class="st">"content"</span>: <span class="st">"Cerca le ultime notizie sull'AI e invia un riassunto a mario@esempio.it"</span>
+    <span class="st">"content"</span>: <span class="st">"Cerca le ultime notizie sull'AI e invia un riassunto a <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0865697a6167486d7b6d6578616726617c">[email&#160;protected]</a>"</span>
   }]
 )
 
@@ -504,13 +666,13 @@ tono amichevole, nessun termine tecnico senza spiegazione."</span>
 <div class="inner">
   <div class="sh fi">
     <div class="pill pg"><div class="dot-b"></div>Sezione 03</div>
-    <h2>Generativa vs Agentiva<br>a confronto diretto</h2>
+    <h2>Generativa vs Agentica<br>a confronto diretto</h2>
     <p class="slead">Due paradigmi complementari: capire le differenze aiuta a scegliere lo strumento giusto per ogni esigenza concreta.</p>
   </div>
 
   <div class="tw fi">
     <table>
-      <thead><tr><th>Caratteristica</th><th>🤖 AI Generativa</th><th>⚡ AI Agentiva</th></tr></thead>
+      <thead><tr><th>Caratteristica</th><th>🤖 AI Generativa</th><th>⚡ AI Agentica</th></tr></thead>
       <tbody>
         <tr><td class="tdf">Obiettivo principale</td><td>Produrre un contenuto di qualità (testo, immagine, codice…)</td><td>Completare un compito complesso attraverso azioni sequenziali</td></tr>
         <tr><td class="tdf">Modalità di interazione</td><td>Una richiesta → una risposta (conversazione)</td><td>Un obiettivo → pianificazione → esecuzione autonoma di N passi</td></tr>
@@ -527,11 +689,11 @@ tono amichevole, nessun termine tecnico senza spiegazione."</span>
   <h3 style="margin-top:3rem;margin-bottom:1.5rem;">🚀 Applicazioni reali nel 2025</h3>
   <div class="g3">
     <div class="card fi"><div class="ci cic">🏥</div><span class="badge bb">Generativa</span><h3>Medicina e sanità</h3><p>LLM che riassumono cartelle cliniche, generano report medici strutturati e supportano i medici nella formulazione di diagnosi differenziali.</p></div>
-    <div class="card v fi"><div class="ci civ">💼</div><span class="badge bm">Agentiva</span><h3>Automazione del lavoro</h3><p>Agenti che gestiscono l'inbox email, prenotano riunioni, analizzano report finanziari e producono sintesi esecutive senza intervento manuale.</p></div>
+    <div class="card v fi"><div class="ci civ">💼</div><span class="badge bm">Agentica</span><h3>Automazione del lavoro</h3><p>Agenti che gestiscono l'inbox email, prenotano riunioni, analizzano report finanziari e producono sintesi esecutive senza intervento manuale.</p></div>
     <div class="card fi"><div class="ci cic">🛒</div><span class="badge bb">Generativa</span><h3>E-commerce e retail</h3><p>Descrizioni prodotto personalizzate, immagini promozionali generate su richiesta e assistenti clienti disponibili 24/7 in tutte le lingue del mondo.</p></div>
-    <div class="card v fi"><div class="ci civ">🔬</div><span class="badge ba">Agentiva</span><h3>Ricerca scientifica</h3><p>Agenti che scansionano migliaia di articoli scientifici, identificano lacune nella letteratura e formulano nuove ipotesi di ricerca in modo semi-autonomo.</p></div>
+    <div class="card v fi"><div class="ci civ">🔬</div><span class="badge ba">Agentica</span><h3>Ricerca scientifica</h3><p>Agenti che scansionano migliaia di articoli scientifici, identificano lacune nella letteratura e formulano nuove ipotesi di ricerca in modo semi-autonomo.</p></div>
     <div class="card fi"><div class="ci cic">🎓</div><span class="badge bb">Generativa</span><h3>Educazione personalizzata</h3><p>Tutor AI che adattano spiegazioni, esercizi e ritmo di apprendimento al livello e allo stile cognitivo di ogni singolo studente.</p></div>
-    <div class="card v fi"><div class="ci civ">🏗</div><span class="badge ba">Agentiva</span><h3>Sviluppo software</h3><p>Agenti come Devin e Cursor scrivono interi moduli, eseguono test, correggono bug e aprono pull request in autonomia, riducendo significativamente i tempi di sviluppo.</p></div>
+    <div class="card v fi"><div class="ci civ">🏗</div><span class="badge ba">Agentica</span><h3>Sviluppo software</h3><p>Agenti come Devin e Cursor scrivono interi moduli, eseguono test, correggono bug e aprono pull request in autonomia, riducendo significativamente i tempi di sviluppo.</p></div>
   </div>
 
   <h3 style="margin-top:3rem;margin-bottom:1.5rem;">📈 Maturità tecnologica — stato attuale 2025</h3>
@@ -596,7 +758,7 @@ tono amichevole, nessun termine tecnico senza spiegazione."</span>
     <div class="card fi"><div class="ci cic">💻</div><span class="badge bb">Principiante</span><h3>Programmazione avanzata</h3><p>Claude scrive, spiega, corregge e ottimizza codice in 20+ linguaggi. Claude Code è un agente specializzato che lavora direttamente sul tuo repository da terminale.</p></div>
     <div class="card g fi"><div class="ci cig">🔬</div><span class="badge bm">Intermedio</span><h3>Ragionamento esteso</h3><p>I modelli con "extended thinking" possono ragionare in modo approfondito prima di rispondere, aumentando significativamente la qualità su problemi complessi e sfide matematiche.</p></div>
     <div class="card v fi"><div class="ci civ">👁</div><span class="badge bm">Intermedio</span><h3>Visione (multimodale)</h3><p>Claude analizza immagini, grafici, screenshot, diagrammi e documenti scansionati, rispondendo a domande sul contenuto visivo con alta accuratezza.</p></div>
-    <div class="card fi"><div class="ci cic">🖥</div><span class="badge ba">Avanzato</span><h3>Computer Use (agentiva)</h3><p>Claude può controllare un computer reale: navigare siti web, compilare moduli, usare applicazioni desktop — uno degli esempi più avanzati di AI agentiva disponibili pubblicamente.</p></div>
+    <div class="card fi"><div class="ci cic">🖥</div><span class="badge ba">Avanzato</span><h3>Computer Use (agentica)</h3><p>Claude può controllare un computer reale: navigare siti web, compilare moduli, usare applicazioni desktop — uno degli esempi più avanzati di AI agentica disponibili pubblicamente.</p></div>
     <div class="card g fi"><div class="ci cig">🌍</div><span class="badge bb">Principiante</span><h3>Multilingua nativo</h3><p>Claude comprende e genera testo in oltre 50 lingue con qualità elevata, inclusi italiano, arabo e cinese, senza degradazione qualitativa rispetto all'inglese.</p></div>
   </div>
 
@@ -621,7 +783,7 @@ tono amichevole, nessun termine tecnico senza spiegazione."</span>
   <span class="vr">model</span>=<span class="st">"claude-sonnet-4-6"</span>,
   <span class="vr">max_tokens</span>=<span class="nm">1024</span>,
   <span class="vr">messages</span>=[
-    {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"Spiega la differenza tra AI generativa e AI agentiva in 3 frasi."</span>}
+    {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"Spiega la differenza tra AI generativa e AI agentica in 3 frasi."</span>}
   ]
 )
 <span class="fn">print</span>(<span class="vr">message</span>.<span class="vr">content</span>[<span class="nm">0</span>].<span class="vr">text</span>)
@@ -689,7 +851,7 @@ tono amichevole, nessun termine tecnico senza spiegazione."</span>
   </div>
 
   <div class="quiz fi">
-    <div class="qi" onclick="toggleQ(this)"><div class="qq"><span class="qn">01</span><span>Qual è la differenza principale tra AI generativa e AI agentiva?</span><div class="qt">+</div></div><div class="qa">L'AI generativa produce contenuti (testo, immagini, audio) in risposta a una singola richiesta. L'AI agentiva invece <strong>pianifica ed esegue</strong>: usa strumenti reali, compie azioni concrete nel mondo digitale e porta a termine obiettivi articolati in più passi, spesso senza intervento umano continuo.</div></div>
+    <div class="qi" onclick="toggleQ(this)"><div class="qq"><span class="qn">01</span><span>Qual è la differenza principale tra AI generativa e AI agentica?</span><div class="qt">+</div></div><div class="qa">L'AI generativa produce contenuti (testo, immagini, audio) in risposta a una singola richiesta. L'AI agentica invece <strong>pianifica ed esegue</strong>: usa strumenti reali, compie azioni concrete nel mondo digitale e porta a termine obiettivi articolati in più passi, spesso senza intervento umano continuo.</div></div>
     <div class="qi" onclick="toggleQ(this)"><div class="qq"><span class="qn">02</span><span>Cosa significa "tokenizzazione" in un modello linguistico?</span><div class="qt">+</div></div><div class="qa">La tokenizzazione è il processo di conversione del testo in unità numeriche chiamate "token". Una parola può corrispondere a 1–3 token. Ad esempio "intelligenza" potrebbe diventare [intel, ligenza]. Questa rappresentazione numerica permette al modello di elaborare il linguaggio attraverso operazioni matematiche su vettori ad alta dimensione.</div></div>
     <div class="qi" onclick="toggleQ(this)"><div class="qq"><span class="qn">03</span><span>Cos'è il pattern ReAct negli agenti AI?</span><div class="qt">+</div></div><div class="qa"><strong>ReAct = REasoning + ACTing.</strong> L'agente alterna due fasi in ciclo: prima <em>ragiona</em> su cosa fare (pensiero esplicito), poi <em>agisce</em> usando uno strumento, poi <em>osserva</em> il risultato. Ripete finché l'obiettivo è raggiunto. È il pattern alla base della maggior parte degli agenti AI moderni.</div></div>
     <div class="qi" onclick="toggleQ(this)"><div class="qq"><span class="qn">04</span><span>Cos'è il RLHF e perché è fondamentale?</span><div class="qt">+</div></div><div class="qa"><strong>RLHF = Reinforcement Learning from Human Feedback.</strong> Dopo il pre-addestramento, valutatori umani confrontano coppie di risposte indicando quale è migliore. Queste preferenze addestrano un "modello di ricompensa" che guida il fine-tuning finale. È la principale ragione per cui Claude e ChatGPT sono utili, sicuri e piacevoli da utilizzare.</div></div>
@@ -701,22 +863,512 @@ tono amichevole, nessun termine tecnico senza spiegazione."</span>
 </div>
 </div>
 
+<!-- ═══════════════ 07 — STRUMENTI E PIATTAFORME ═══════════════ -->
+<div id="strumenti" class="w">
+<div class="inner">
+  <div class="sh fi">
+    <div class="pill pa"><div class="dot-b"></div>Sezione 07</div>
+    <h2>Strumenti e piattaforme<br>da conoscere nel 2025</h2>
+    <p class="slead">Una mappa pratica dell'ecosistema AI: quali strumenti usare, per cosa, e a che livello di competenza.</p>
+  </div>
+
+  <h3 style="margin-bottom:1.3rem;">📝 Modelli linguistici e assistenti</h3>
+  <div class="g3">
+    <div class="card fi">
+      <div class="ci cic">💬</div>
+      <span class="badge bb">Gratuito disponibile</span>
+      <h3>ChatGPT (OpenAI)</h3>
+      <p>Il più popolare al mondo. Ottimo per uso generale, scrittura, coding e ricerca. GPT-4o è il modello principale, disponibile gratuitamente con limiti.</p>
+      <div style="margin-top:1rem;font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);">chatgpt.com</div>
+    </div>
+    <div class="card v fi">
+      <div class="ci civ">🤖</div>
+      <span class="badge bb">Gratuito disponibile</span>
+      <h3>Claude (Anthropic)</h3>
+      <p>Eccellente per analisi di testi lunghi, ragionamento complesso e codice. Finestra di contesto da 200K token, focus sulla sicurezza e onestà.</p>
+      <div style="margin-top:1rem;font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);">claude.ai</div>
+    </div>
+    <div class="card g fi">
+      <div class="ci cig">💎</div>
+      <span class="badge bb">Gratuito disponibile</span>
+      <h3>Gemini (Google)</h3>
+      <p>Integrato con l'ecosistema Google (Docs, Gmail, Drive). Gemini Ultra è il modello top, con capacità multimodali avanzate e accesso a Google Search.</p>
+      <div style="margin-top:1rem;font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);">gemini.google.com</div>
+    </div>
+    <div class="card fi">
+      <div class="ci cic">🦙</div>
+      <span class="badge bb">Open source</span>
+      <h3>Llama (Meta)</h3>
+      <p>Modello open source di Meta, scaricabile e utilizzabile localmente sul proprio computer senza inviare dati a terzi. Ideale per privacy e personalizzazione.</p>
+      <div style="margin-top:1rem;font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);">llama.meta.com</div>
+    </div>
+    <div class="card v fi">
+      <div class="ci civ">🌊</div>
+      <span class="badge bb">Gratuito disponibile</span>
+      <h3>Mistral AI</h3>
+      <p>Modello europeo (francese) efficiente e potente. Mistral Large compete con GPT-4, mentre i modelli piccoli eccellono su hardware limitato.</p>
+      <div style="margin-top:1rem;font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);">mistral.ai</div>
+    </div>
+    <div class="card g fi">
+      <div class="ci cig">⚡</div>
+      <span class="badge bb">Gratuito disponibile</span>
+      <h3>Grok (xAI)</h3>
+      <p>Creato da xAI di Elon Musk, integrato in X (Twitter). Accesso in tempo reale ai trend social e capacità di ragionamento avanzato con "Think mode".</p>
+      <div style="margin-top:1rem;font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);">grok.com</div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:3rem;margin-bottom:1.3rem;">🎨 Generazione immagini e video</h3>
+  <div class="g3">
+    <div class="card fi">
+      <div class="ci cic">🖼</div>
+      <span class="badge bm">A pagamento</span>
+      <h3>Midjourney</h3>
+      <p>Il riferimento per la qualità artistica. Genera immagini straordinarie da prompt testuali, con uno stile visivo molto riconoscibile. Accessibile via Discord.</p>
+    </div>
+    <div class="card v fi">
+      <div class="ci civ">🎭</div>
+      <span class="badge bb">Gratuito disponibile</span>
+      <h3>DALL-E 3 (OpenAI)</h3>
+      <p>Integrato in ChatGPT Plus. Eccellente nel seguire istruzioni dettagliate e generare testo nelle immagini. Più "fedele" al prompt rispetto a Midjourney.</p>
+    </div>
+    <div class="card g fi">
+      <div class="ci cig">🌅</div>
+      <span class="badge bb">Open source</span>
+      <h3>Stable Diffusion</h3>
+      <p>Il modello open source più popolare. Può girare localmente, completamente gratuito, altamente personalizzabile con migliaia di modelli della community.</p>
+    </div>
+    <div class="card fi">
+      <div class="ci cic">🎬</div>
+      <span class="badge ba">Avanzato</span>
+      <h3>Sora (OpenAI)</h3>
+      <p>Genera video realistici da testo, con comprensione della fisica e del movimento. Rappresenta un salto generazionale nella generazione video da AI.</p>
+    </div>
+    <div class="card v fi">
+      <div class="ci civ">🎥</div>
+      <span class="badge bm">A pagamento</span>
+      <h3>Runway ML</h3>
+      <p>Suite creativa professionale: generazione video, editing con AI, green screen automatico. Usato da professionisti del cinema e della pubblicità.</p>
+    </div>
+    <div class="card g fi">
+      <div class="ci cig">✏️</div>
+      <span class="badge bb">Gratuito disponibile</span>
+      <h3>Adobe Firefly</h3>
+      <p>Integrato in Photoshop e Illustrator. Addestrato solo su contenuti con licenza, garantendo sicurezza legale per uso commerciale professionale.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:3rem;margin-bottom:1.3rem;">💻 Strumenti per sviluppatori e programmatori</h3>
+  <div class="g3">
+    <div class="card fi">
+      <div class="ci cic">🐙</div>
+      <span class="badge bb">Gratuito disponibile</span>
+      <h3>GitHub Copilot</h3>
+      <p>Il co-pilota AI per il coding integrato in VS Code e altri IDE. Completa il codice in tempo reale, suggerisce funzioni intere e spiega il codice esistente.</p>
+    </div>
+    <div class="card v fi">
+      <div class="ci civ">🖱</div>
+      <span class="badge bm">A pagamento</span>
+      <h3>Cursor</h3>
+      <p>Editor di codice costruito attorno all'AI. Permette di chattare con il codebase intero, chiedere modifiche in linguaggio naturale e fare refactoring automatico.</p>
+    </div>
+    <div class="card g fi">
+      <div class="ci cig">🤖</div>
+      <span class="badge ba">Avanzato</span>
+      <h3>Devin (Cognition)</h3>
+      <p>Il primo "ingegnere software AI" autonomo. Può ricevere un compito completo, pianificare l'implementazione, scrivere il codice, testarlo e fare il deploy.</p>
+    </div>
+    <div class="card fi">
+      <div class="ci cic">🔁</div>
+      <span class="badge bm">Intermedio</span>
+      <h3>n8n / Make (agenti no-code)</h3>
+      <p>Piattaforme visive per costruire flussi di automazione con AI senza scrivere codice. Collegano centinaia di app e servizi con nodi AI integrati.</p>
+    </div>
+    <div class="card v fi">
+      <div class="ci civ">🧱</div>
+      <span class="badge bm">Intermedio</span>
+      <h3>LangChain / LlamaIndex</h3>
+      <p>Framework Python per costruire applicazioni AI avanzate: agenti, catene di ragionamento, RAG (retrieval-augmented generation) e memoria persistente.</p>
+    </div>
+    <div class="card g fi">
+      <div class="ci cig">🗃</div>
+      <span class="badge bm">Intermedio</span>
+      <h3>Pinecone / Chroma (Vector DB)</h3>
+      <p>Database vettoriali per dare memoria a lungo termine agli agenti AI. Permettono la ricerca semantica su milioni di documenti in millisecondi.</p>
+    </div>
+  </div>
+
+  <div class="callout ci fi" style="margin-top:2rem;">
+    <span class="cico">🗺</span>
+    <p><strong>Come scegliere lo strumento giusto:</strong> Per iniziare usa <strong>Claude</strong> o <strong>ChatGPT</strong> gratuitamente. Per immagini prova <strong>DALL-E 3</strong> integrato in ChatGPT. Per programmare usa <strong>GitHub Copilot</strong> (gratuito per studenti). Per automazioni senza codice esplora <strong>n8n</strong>.</p>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════ 08 — RAG E MEMORIA ═══════════════ -->
+<div id="rag" class="w wd">
+<div class="inner">
+  <div class="sh fi">
+    <div class="pill pv"><div class="dot-b"></div>Sezione 08 — Avanzato</div>
+    <h2>RAG: dare memoria<br>all'AI con i tuoi dati</h2>
+    <p class="slead">La Retrieval-Augmented Generation è la tecnica più usata per fare in modo che un LLM risponda basandosi sui tuoi documenti, aggiornato e senza allucinazioni.</p>
+  </div>
+
+  <div class="callout ci fi">
+    <span class="cico">🧠</span>
+    <p><strong>Il problema:</strong> Un LLM addestrato ha una data di taglio (es. aprile 2024) e non conosce i tuoi documenti interni, manuali aziendali o dati privati. Come si risolve senza riaddestramento?</p>
+  </div>
+
+  <div class="diag fi">
+    <div class="dt">// Architettura RAG — Retrieval-Augmented Generation</div>
+    <div class="flow" style="flex-direction:column;gap:1rem;">
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;align-items:stretch;">
+        <div style="flex:1;min-width:200px;">
+          <div style="font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem;text-align:center;">FASE 1: INDICIZZAZIONE (offline)</div>
+          <div class="flow" style="flex-direction:column;gap:.5rem;">
+            <div class="fbox" style="width:100%;text-align:center;">📄 Documenti tuoi<br><span style="font-size:.65rem;opacity:.7;">(PDF, Word, Wiki, DB…)</span></div>
+            <div class="farr" style="transform:rotate(90deg);align-self:center;">→</div>
+            <div class="fbox" style="width:100%;text-align:center;">✂️ Chunking<br><span style="font-size:.65rem;opacity:.7;">Divisione in paragrafi</span></div>
+            <div class="farr" style="transform:rotate(90deg);align-self:center;">→</div>
+            <div class="fbox fv" style="width:100%;text-align:center;">🔢 Embedding<br><span style="font-size:.65rem;opacity:.7;">Testo → vettori numerici</span></div>
+            <div class="farr" style="transform:rotate(90deg);align-self:center;">→</div>
+            <div class="fbox fg" style="width:100%;text-align:center;">🗃 Vector Database<br><span style="font-size:.65rem;opacity:.7;">Pinecone, Chroma, Weaviate</span></div>
+          </div>
+        </div>
+        <div style="width:2px;background:var(--border);align-self:stretch;"></div>
+        <div style="flex:1;min-width:200px;">
+          <div style="font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem;text-align:center;">FASE 2: QUERY (runtime)</div>
+          <div class="flow" style="flex-direction:column;gap:.5rem;">
+            <div class="fbox fc" style="width:100%;text-align:center;">❓ Domanda utente</div>
+            <div class="farr" style="transform:rotate(90deg);align-self:center;">→</div>
+            <div class="fbox fv" style="width:100%;text-align:center;">🔍 Ricerca semantica<br><span style="font-size:.65rem;opacity:.7;">Top-K chunk rilevanti</span></div>
+            <div class="farr" style="transform:rotate(90deg);align-self:center;">→</div>
+            <div class="fbox" style="width:100%;text-align:center;">📋 Costruzione prompt<br><span style="font-size:.65rem;opacity:.7;">Domanda + contesto recuperato</span></div>
+            <div class="farr" style="transform:rotate(90deg);align-self:center;">→</div>
+            <div class="fbox fg" style="width:100%;text-align:center;">✅ Risposta fondata<br><span style="font-size:.65rem;opacity:.7;">Basata sui tuoi dati</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout ct fi">
+    <span class="cico">✅</span>
+    <p><strong>Vantaggi del RAG:</strong> Nessun riaddestramento costoso, dati sempre aggiornabili, risposte verificabili con citazioni delle fonti, funziona con qualsiasi LLM e mantiene la privacy dei dati sensibili.</p>
+  </div>
+
+  <h3 style="margin-top:2.5rem;margin-bottom:1rem;">💻 Esempio RAG minimale in Python</h3>
+  <div class="code fi">
+    <div class="cbar"><div class="cdots"><div class="cd cdr"></div><div class="cd cdy"></div><div class="cd cdg"></div></div><span class="clbl">Python — RAG con LangChain + Claude</span></div>
+    <pre><span class="kw">from</span> <span class="vr">langchain_anthropic</span> <span class="kw">import</span> <span class="fn">ChatAnthropic</span>
+<span class="kw">from</span> <span class="vr">langchain_community.vectorstores</span> <span class="kw">import</span> <span class="fn">Chroma</span>
+<span class="kw">from</span> <span class="vr">langchain_community.embeddings</span> <span class="kw">import</span> <span class="fn">HuggingFaceEmbeddings</span>
+<span class="kw">from</span> <span class="vr">langchain.text_splitter</span> <span class="kw">import</span> <span class="fn">RecursiveCharacterTextSplitter</span>
+
+<span class="cm"># 1. Carica e indicizza i tuoi documenti</span>
+<span class="vr">splitter</span> = <span class="fn">RecursiveCharacterTextSplitter</span>(<span class="vr">chunk_size</span>=<span class="nm">500</span>, <span class="vr">chunk_overlap</span>=<span class="nm">50</span>)
+<span class="vr">chunks</span> = <span class="vr">splitter</span>.<span class="fn">create_documents</span>([<span class="vr">tuo_testo</span>])
+
+<span class="cm"># 2. Converti i chunk in vettori e salvali nel DB</span>
+<span class="vr">embeddings</span> = <span class="fn">HuggingFaceEmbeddings</span>()
+<span class="vr">vectorstore</span> = <span class="fn">Chroma</span>.<span class="fn">from_documents</span>(<span class="vr">chunks</span>, <span class="vr">embeddings</span>)
+
+<span class="cm"># 3. Al momento della query, recupera i chunk rilevanti</span>
+<span class="vr">domanda</span> = <span class="st">"Qual è la policy delle ferie aziendali?"</span>
+<span class="vr">docs_rilevanti</span> = <span class="vr">vectorstore</span>.<span class="fn">similarity_search</span>(<span class="vr">domanda</span>, <span class="vr">k</span>=<span class="nm">3</span>)
+
+<span class="cm"># 4. Invia domanda + contesto a Claude</span>
+<span class="vr">llm</span> = <span class="fn">ChatAnthropic</span>(<span class="vr">model</span>=<span class="st">"claude-sonnet-4-6"</span>)
+<span class="vr">contesto</span> = <span class="st">"\n"</span>.<span class="fn">join</span>([<span class="vr">d</span>.<span class="vr">page_content</span> <span class="kw">for</span> <span class="vr">d</span> <span class="kw">in</span> <span class="vr">docs_rilevanti</span>])
+<span class="vr">prompt</span> = <span class="st">f"Contesto:\n{contesto}\n\nDomanda: {domanda}"</span>
+<span class="vr">risposta</span> = <span class="vr">llm</span>.<span class="fn">invoke</span>(<span class="vr">prompt</span>)
+<span class="fn">print</span>(<span class="vr">risposta</span>.<span class="vr">content</span>)  <span class="cm"># Risposta basata sui tuoi doc!</span></pre>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════ 09 — SICUREZZA E ETICA ═══════════════ -->
+<div id="sicurezza" class="w">
+<div class="inner">
+  <div class="sh fi">
+    <div class="pill pc"><div class="dot-b"></div>Sezione 09</div>
+    <h2>Sicurezza, etica<br>e limiti dell'AI</h2>
+    <p class="slead">Capire i rischi e i limiti dell'AI è fondamentale per usarla responsabilmente. Non è fantascienza: sono sfide reali e concrete già oggi.</p>
+  </div>
+
+  <div class="g3">
+    <div class="card fi">
+      <div class="ci cic">🌀</div>
+      <span class="badge bm">Da sapere</span>
+      <h3>Allucinazioni</h3>
+      <p>I modelli generano testo plausibile ma a volte falso con grande sicurezza. Nomi sbagliati, date inventate, citazioni inesistenti. Verifica sempre le informazioni critiche su fonti primarie.</p>
+    </div>
+    <div class="card v fi">
+      <div class="ci civ">🎭</div>
+      <span class="badge bm">Da sapere</span>
+      <h3>Deepfake e disinformazione</h3>
+      <p>La generazione di immagini, audio e video realistici di persone reali pone rischi seri per la disinformazione, la manipolazione politica e le truffe. Strumenti di rilevamento sono in sviluppo.</p>
+    </div>
+    <div class="card g fi">
+      <div class="ci cig">⚖️</div>
+      <span class="badge bm">Da sapere</span>
+      <h3>Bias e discriminazione</h3>
+      <p>I modelli addestrati su dati storici possono amplificare pregiudizi esistenti (di genere, razza, classe). È essenziale valutare e monitorare i sistemi AI in produzione.</p>
+    </div>
+    <div class="card fi">
+      <div class="ci cic">🔒</div>
+      <span class="badge bb">Importante</span>
+      <h3>Privacy dei dati</h3>
+      <p>Inviare dati sensibili a LLM commerciali comporta rischi di privacy. Non includere mai password, dati medici o segreti aziendali in prompt non protetti.</p>
+    </div>
+    <div class="card v fi">
+      <div class="ci civ">🌍</div>
+      <span class="badge bm">Da sapere</span>
+      <h3>Impatto ambientale</h3>
+      <p>Addestrare un grande modello linguistico consuma quanta energia equivalente a centinaia di voli transatlantici. Il costo energetico dell'AI è una preoccupazione crescente.</p>
+    </div>
+    <div class="card g fi">
+      <div class="ci cig">🤝</div>
+      <span class="badge bb">Importante</span>
+      <h3>AI Act Europeo</h3>
+      <p>In vigore dal 2025, l'AI Act dell'UE classifica i sistemi AI per livello di rischio (inaccettabile, alto, limitato, minimo) e impone obblighi alle aziende che li sviluppano e usano.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:3rem;margin-bottom:1rem;">🛡 Principi per un uso responsabile dell'AI</h3>
+  <div class="steps">
+    <div class="step fi">
+      <div class="snum">01</div>
+      <div>
+        <h4>Verifica sempre le informazioni critiche</h4>
+        <p>Non fidarti ciecamente delle risposte AI per decisioni importanti (mediche, legali, finanziarie). Usa l'AI come punto di partenza, non come fonte definitiva.</p>
+      </div>
+    </div>
+    <div class="step fi">
+      <div class="snum">02</div>
+      <div>
+        <h4>Proteggi i dati sensibili</h4>
+        <p>Non inserire dati personali identificabili, segreti aziendali o informazioni riservate nei prompt di LLM commerciali. Usa modelli locali (Llama) per dati sensibili.</p>
+      </div>
+    </div>
+    <div class="step fi">
+      <div class="snum">03</div>
+      <div>
+        <h4>Mantieni la supervisione umana</h4>
+        <p>Per sistemi agentici che compiono azioni reali, prevedi sempre un punto di controllo umano prima di azioni irreversibili: invio email, transazioni, pubblicazioni.</p>
+      </div>
+    </div>
+    <div class="step fi">
+      <div class="snum">04</div>
+      <div>
+        <h4>Trasparenza verso gli altri</h4>
+        <p>Indica quando un contenuto è generato da AI, specialmente in contesti professionali, accademici o pubblici. La trasparenza crea fiducia e previene problemi legali.</p>
+      </div>
+    </div>
+    <div class="step fi">
+      <div class="snum">05</div>
+      <div>
+        <h4>Aggiornati continuamente</h4>
+        <p>Il campo dell'AI evolve ogni settimana. Segui fonti affidabili (Anthropic, OpenAI, DeepMind blog, MIT Technology Review) per rimanere aggiornato su capacità e rischi.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════ 10 — GLOSSARIO ═══════════════ -->
+<div id="glossario" class="w wd">
+<div class="inner">
+  <div class="sh fi">
+    <div class="pill pg"><div class="dot-b"></div>Sezione 10 — Riferimento</div>
+    <h2>Glossario essenziale<br>dell'AI moderna</h2>
+    <p class="slead">I termini tecnici più importanti spiegati in modo semplice. Salvalo come riferimento rapido.</p>
+  </div>
+
+  <div class="g2 fi">
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+      <div class="card" style="padding:1.3rem">
+        <div style="display:flex;gap:.75rem;align-items:baseline;">
+          <span style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--cyan);min-width:110px;">LLM</span>
+          <p style="font-size:.85rem;color:var(--text2);line-height:1.6;">Large Language Model — modello linguistico di grandi dimensioni addestrato su enormi quantità di testo per comprendere e generare linguaggio naturale.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:1.3rem">
+        <div style="display:flex;gap:.75rem;align-items:baseline;">
+          <span style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--cyan);min-width:110px;">Token</span>
+          <p style="font-size:.85rem;color:var(--text2);line-height:1.6;">Unità base del testo in un LLM. Può essere una parola, parte di parola o punteggiatura. "Ciao mondo" = ~3 token. I costi API si basano sul numero di token.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:1.3rem">
+        <div style="display:flex;gap:.75rem;align-items:baseline;">
+          <span style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--cyan);min-width:110px;">Prompt</span>
+          <p style="font-size:.85rem;color:var(--text2);line-height:1.6;">L'input testuale che fornisci al modello. La qualità del prompt determina direttamente la qualità dell'output (garbage in, garbage out).</p>
+        </div>
+      </div>
+      <div class="card" style="padding:1.3rem">
+        <div style="display:flex;gap:.75rem;align-items:baseline;">
+          <span style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--cyan);min-width:110px;">Transformer</span>
+          <p style="font-size:.85rem;color:var(--text2);line-height:1.6;">Architettura neurale introdotta da Google nel 2017 ("Attention is All You Need"). È la base di quasi tutti i grandi modelli linguistici moderni.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:1.3rem">
+        <div style="display:flex;gap:.75rem;align-items:baseline;">
+          <span style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--cyan);min-width:110px;">Attenzione</span>
+          <p style="font-size:.85rem;color:var(--text2);line-height:1.6;">Meccanismo che permette al modello di "pesare" l'importanza di ogni parola rispetto alle altre nel contesto. È il segreto della comprensione del linguaggio nei Transformer.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:1.3rem">
+        <div style="display:flex;gap:.75rem;align-items:baseline;">
+          <span style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--cyan);min-width:110px;">Embedding</span>
+          <p style="font-size:.85rem;color:var(--text2);line-height:1.6;">Rappresentazione numerica di testo sotto forma di vettore multidimensionale. Parole o frasi con significato simile hanno vettori vicini nello spazio matematico.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:1.3rem">
+        <div style="display:flex;gap:.75rem;align-items:baseline;">
+          <span style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--cyan);min-width:110px;">Temperature</span>
+          <p style="font-size:.85rem;color:var(--text2);line-height:1.6;">Parametro che controlla la "creatività" dell'output. Bassa (0.1) = risposte deterministiche e precise. Alta (1.0+) = risposte creative ma meno prevedibili.</p>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+      <div class="card" style="padding:1.3rem">
+        <div style="display:flex;gap:.75rem;align-items:baseline;">
+          <span style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--violet);min-width:110px;">RAG</span>
+          <p style="font-size:.85rem;color:var(--text2);line-height:1.6;">Retrieval-Augmented Generation — tecnica che arricchisce il prompt con documenti rilevanti recuperati da un database, permettendo risposte basate sui propri dati.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:1.3rem">
+        <div style="display:flex;gap:.75rem;align-items:baseline;">
+          <span style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--violet);min-width:110px;">Fine-tuning</span>
+          <p style="font-size:.85rem;color:var(--text2);line-height:1.6;">Processo di addestramento aggiuntivo di un modello pre-addestrato su dati specifici del proprio dominio, per specializzarlo in compiti o stili particolari.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:1.3rem">
+        <div style="display:flex;gap:.75rem;align-items:baseline;">
+          <span style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--violet);min-width:110px;">Zero-shot</span>
+          <p style="font-size:.85rem;color:var(--text2);line-height:1.6;">Capacità del modello di eseguire un compito senza esempi precedenti nel prompt. Es: "Classifica questo testo come positivo o negativo" senza esempi.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:1.3rem">
+        <div style="display:flex;gap:.75rem;align-items:baseline;">
+          <span style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--violet);min-width:110px;">Few-shot</span>
+          <p style="font-size:.85rem;color:var(--text2);line-height:1.6;">Fornire al modello 2-5 esempi del compito da svolgere nel prompt stesso, per guidarne l'output senza riaddestramento. Molto più efficace del zero-shot su compiti specifici.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:1.3rem">
+        <div style="display:flex;gap:.75rem;align-items:baseline;">
+          <span style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--violet);min-width:110px;">Chain-of-Thought</span>
+          <p style="font-size:.85rem;color:var(--text2);line-height:1.6;">Tecnica di prompting che chiede al modello di "pensare passo per passo" prima di rispondere. Migliora significativamente le prestazioni su problemi matematici e logici.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:1.3rem">
+        <div style="display:flex;gap:.75rem;align-items:baseline;">
+          <span style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--violet);min-width:110px;">Multimodale</span>
+          <p style="font-size:.85rem;color:var(--text2);line-height:1.6;">Modello capace di elaborare più tipi di dato: testo, immagini, audio, video. GPT-4o e Claude Sonnet sono esempi di modelli multimodali.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:1.3rem">
+        <div style="display:flex;gap:.75rem;align-items:baseline;">
+          <span style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--violet);min-width:110px;">AGI</span>
+          <p style="font-size:.85rem;color:var(--text2);line-height:1.6;">Artificial General Intelligence — AI con capacità cognitive paragonabili all'essere umano in qualsiasi dominio. Non ancora esistente, ma al centro del dibattito nel settore.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════ 11 — ROADMAP APPRENDIMENTO ═══════════════ -->
+<div id="roadmap" class="w">
+<div class="inner">
+  <div class="sh fi">
+    <div class="pill pc"><div class="dot-b"></div>Sezione 11 — Percorso</div>
+    <h2>La tua roadmap<br>per imparare l'AI</h2>
+    <p class="slead">Un percorso strutturato in tre livelli per passare da zero a professionista dell'AI, con risorse concrete per ogni tappa.</p>
+  </div>
+
+  <div class="g3" style="margin-bottom:3rem;">
+    <div class="card fi" style="border-color:rgba(0,229,122,.2);">
+      <div class="ci cig">🌱</div>
+      <div style="font-family:'DM Mono',monospace;font-size:.65rem;color:var(--green);letter-spacing:.1em;margin-bottom:.75rem;">LIVELLO 1 — 1-2 mesi</div>
+      <h3>Principiante</h3>
+      <div style="display:flex;flex-direction:column;gap:.5rem;margin-top:1rem;">
+        <div style="display:flex;gap:.6rem;font-size:.82rem;color:var(--text2);"><span style="color:var(--green);">✓</span>Usare Claude e ChatGPT efficacemente</div>
+        <div style="display:flex;gap:.6rem;font-size:.82rem;color:var(--text2);"><span style="color:var(--green);">✓</span>Scrivere prompt strutturati (ruolo+task+formato)</div>
+        <div style="display:flex;gap:.6rem;font-size:.82rem;color:var(--text2);"><span style="color:var(--green);">✓</span>Capire cos'è un LLM e come funziona</div>
+        <div style="display:flex;gap:.6rem;font-size:.82rem;color:var(--text2);"><span style="color:var(--green);">✓</span>Provare generazione immagini con DALL-E 3</div>
+        <div style="display:flex;gap:.6rem;font-size:.82rem;color:var(--text2);"><span style="color:var(--green);">✓</span>Conoscere i rischi base (allucinazioni, privacy)</div>
+      </div>
+    </div>
+    <div class="card v fi" style="border-color:rgba(155,111,245,.3);">
+      <div class="ci civ">🚀</div>
+      <div style="font-family:'DM Mono',monospace;font-size:.65rem;color:var(--violet);letter-spacing:.1em;margin-bottom:.75rem;">LIVELLO 2 — 3-6 mesi</div>
+      <h3>Intermedio</h3>
+      <div style="display:flex;flex-direction:column;gap:.5rem;margin-top:1rem;">
+        <div style="display:flex;gap:.6rem;font-size:.82rem;color:var(--text2);"><span style="color:var(--violet);">✓</span>Usare l'API Anthropic o OpenAI con Python</div>
+        <div style="display:flex;gap:.6rem;font-size:.82rem;color:var(--text2);"><span style="color:var(--violet);">✓</span>Costruire un semplice agente con tool use</div>
+        <div style="display:flex;gap:.6rem;font-size:.82rem;color:var(--text2);"><span style="color:var(--violet);">✓</span>Implementare un sistema RAG su documenti propri</div>
+        <div style="display:flex;gap:.6rem;font-size:.82rem;color:var(--text2);"><span style="color:var(--violet);">✓</span>Capire embeddings e vector database</div>
+        <div style="display:flex;gap:.6rem;font-size:.82rem;color:var(--text2);"><span style="color:var(--violet);">✓</span>Automatizzare workflow con n8n o LangChain</div>
+      </div>
+    </div>
+    <div class="card fi" style="border-color:rgba(0,212,255,.25);">
+      <div class="ci cic">⚡</div>
+      <div style="font-family:'DM Mono',monospace;font-size:.65rem;color:var(--cyan);letter-spacing:.1em;margin-bottom:.75rem;">LIVELLO 3 — 6-12 mesi</div>
+      <h3>Avanzato</h3>
+      <div style="display:flex;flex-direction:column;gap:.5rem;margin-top:1rem;">
+        <div style="display:flex;gap:.6rem;font-size:.82rem;color:var(--text2);"><span style="color:var(--cyan);">✓</span>Fine-tuning di modelli open source (Llama)</div>
+        <div style="display:flex;gap:.6rem;font-size:.82rem;color:var(--text2);"><span style="color:var(--cyan);">✓</span>Progettare sistemi multi-agente complessi</div>
+        <div style="display:flex;gap:.6rem;font-size:.82rem;color:var(--text2);"><span style="color:var(--cyan);">✓</span>Valutare e mitigare i rischi dei sistemi AI</div>
+        <div style="display:flex;gap:.6rem;font-size:.82rem;color:var(--text2);"><span style="color:var(--cyan);">✓</span>Conoscere l'architettura Transformer in dettaglio</div>
+        <div style="display:flex;gap:.6rem;font-size:.82rem;color:var(--text2);"><span style="color:var(--cyan);">✓</span>Contribuire a progetti AI open source</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom:1.3rem;">📚 Risorse consigliate per iniziare</h3>
+  <div class="g3">
+    <div class="card fi"><div class="ci cic">📖</div><span class="badge bb">Gratuito</span><h3>fast.ai</h3><p>Il miglior corso pratico di deep learning gratuito online. Approccio top-down: prima si costruisce, poi si capisce la teoria. Ottimo per chi vuole sporcarsi le mani subito.</p></div>
+    <div class="card v fi"><div class="ci civ">🎓</div><span class="badge bb">Gratuito</span><h3>DeepLearning.AI (Coursera)</h3><p>Andrew Ng offre corsi fondamentali e specializzati sull'AI. Il corso "ChatGPT Prompt Engineering for Developers" è gratuito e ottimo per iniziare con i LLM.</p></div>
+    <div class="card g fi"><div class="ci cig">📺</div><span class="badge bb">Gratuito</span><h3>Andrej Karpathy su YouTube</h3><p>Ex direttore AI di Tesla e OpenAI. I suoi video "Neural Networks: Zero to Hero" sono tra le migliori risorse gratuite per capire i LLM dal codice in su.</p></div>
+    <div class="card fi"><div class="ci cic">📝</div><span class="badge bb">Gratuito</span><h3>Anthropic Documentation</h3><p>La documentazione ufficiale di Claude. Include guide al prompt engineering, API reference completa, cookbook con esempi pratici e best practice aggiornate.</p></div>
+    <div class="card v fi"><div class="ci civ">🔬</div><span class="badge bb">Gratuito</span><h3>Papers with Code</h3><p>Aggregatore di paper scientifici con il codice sorgente allegato. Ideale per tenersi aggiornati sulle ultime ricerche e trovare implementazioni funzionanti.</p></div>
+    <div class="card g fi"><div class="ci cig">🗣</div><span class="badge bb">Gratuito</span><h3>Hugging Face</h3><p>La "GitHub dell'AI": migliaia di modelli, dataset e spazi demo gratuiti. La libreria Transformers è il punto di partenza per sperimentare con modelli open source.</p></div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
 <!-- FOOTER -->
 <footer>
   <span class="flogo">AI<span>Academy</span></span>
   <div class="flinks">
+    <a href="#about">Chi sono</a>
     <a href="#generativa">AI Generativa</a>
-    <a href="#agentiva">AI Agentiva</a>
-    <a href="#confronto">Confronto</a>
+    <a href="#agentica">AI Agentica</a>
     <a href="#claude">Claude</a>
+    <a href="#strumenti">Strumenti</a>
+    <a href="#rag">RAG</a>
+    <a href="#glossario">Glossario</a>
+    <a href="#roadmap">Roadmap</a>
     <a href="#video">Video</a>
     <a href="#quiz">Quiz</a>
   </div>
-  <p>Realizzato per rendere l'intelligenza artificiale accessibile a tutti — studenti, professionisti e curiosi.</p>
+  <p>Progetto di <strong style="color:var(--cyan)">Amedeo Tortora</strong> — Data Architect &amp; AI Enthusiast</p>
+  <p style="margin-top:.4rem;color:var(--muted);font-size:.75rem;font-family:'DM Mono',monospace;">Per rendere l'intelligenza artificiale accessibile a tutti.</p>
   <p style="margin-top:.6rem;font-size:.62rem;opacity:.4;">Contenuti a scopo educativo · Aggiornato 2025 · Gratuito e aperto</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function toggleQ(el) {
   const open = el.classList.contains('open');
   document.querySelectorAll('.qi').forEach(i => i.classList.remove('open'));
@@ -734,13 +1386,4 @@ const obs = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
-document.querySelectorAll('.fi').forEach(el => obs.observe(el));
-
-setTimeout(() => {
-  document.querySelectorAll('.fi').forEach(el => {
-    if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('vis');
-  });
-}, 80);
-</script>
-</body>
-</html>
+document.querySelectorAll('.fi').fo
